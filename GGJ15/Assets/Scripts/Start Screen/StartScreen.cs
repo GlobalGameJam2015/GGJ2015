@@ -93,39 +93,14 @@ public class StartScreen : MonoBehaviour {
 		
 		if (GUILayout.Button("Find Opponent", GUILayout.Width(150)))
 		{
-			PhotonNetwork.JoinOrCreateRoom(this.roomName, new RoomOptions() { maxPlayers = 20 }, null);
+			PhotonNetwork.JoinLobby();
+			GetComponent<FindOpponent>().enabled = true;
+			enabled = false;
 		}
 		
 		GUILayout.EndHorizontal();
 		
 		GUILayout.EndArea();
-	}
-	
-	// We have two options here: we either joined(by title, list or random) or created a room.
-	public void OnJoinedRoom()
-	{
-		Debug.Log("OnJoinedRoom");
-	}
-	
-	
-	public void OnPhotonCreateRoomFailed()
-	{
-		Debug.Log("OnPhotonCreateRoomFailed got called. This can happen if the room exists (even if not visible). Try another room name.");
-	}
-	
-	public void OnPhotonJoinRoomFailed()
-	{
-		Debug.Log("OnPhotonJoinRoomFailed got called. This can happen if the room is not existing or full or closed.");
-	}
-	public void OnPhotonRandomJoinFailed()
-	{
-		Debug.Log("OnPhotonRandomJoinFailed got called. Happens if no room is available (or all full or invisible or closed). JoinrRandom filter-options can limit available rooms.");
-	}
-	
-	public void OnCreatedRoom()
-	{
-		Debug.Log("OnCreatedRoom");
-		PhotonNetwork.LoadLevel(SceneNameGame);
 	}
 	
 	public void OnDisconnectedFromPhoton()
