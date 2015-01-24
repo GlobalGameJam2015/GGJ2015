@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		Debug.Log("YOU ARE NOW IN THE GAME SCENE");
 		Deck = GetComponent<DeckBuilder>();
+		Debug.Log(GetComponent<DeckBuilder>());
 	}
 	
 	// Begin Turn
@@ -33,6 +34,8 @@ public class GameManager : MonoBehaviour {
 
 	//Draw a card
 	public void DrawCard(){
+		Debug.Log(Hand);
+		Debug.Log(Deck);
 		Hand.Add(Deck.Shuffled[0]);
 		Deck.Shuffled.RemoveAt(0);
 		//TODO: Animation and visual of card being drawn into hand
