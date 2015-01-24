@@ -34,4 +34,5 @@ MonoBehaviour:
   - RequestForPickupTimes
   - TaggedPlayer
   - FoundOpponent
+  - EnterGameScene
   DisableAutoOpenWizard: 0

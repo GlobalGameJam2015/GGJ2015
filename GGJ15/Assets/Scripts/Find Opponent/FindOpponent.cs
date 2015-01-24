@@ -21,7 +21,9 @@ public class FindOpponent : Photon.MonoBehaviour {
 	public void OnJoinedRoom()
 	{
 		Debug.Log("OnJoinedRoom: " + PhotonNetwork.player.isMasterClient);
-		if(PhotonNetwork.player.isMasterClient){
+		if(!PhotonNetwork.player.isMasterClient){
+			Debug.Log(photonView);
+			Debug.Log(PhotonTargets.MasterClient);
 			photonView.RPC("EnterGameScene",PhotonTargets.MasterClient);
 		}
 	}
