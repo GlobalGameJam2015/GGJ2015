@@ -21,6 +21,9 @@ public class FindOpponent : Photon.MonoBehaviour {
 	public void OnJoinedRoom()
 	{
 		Debug.Log("OnJoinedRoom: " + PhotonNetwork.player.isMasterClient);
+		if(PhotonNetwork.player.isMasterClient){
+			photonView.RPC("EnterGameScene",PhotonTargets.MasterClient);
+		}
 	}
 	
 	
@@ -54,8 +57,8 @@ public class FindOpponent : Photon.MonoBehaviour {
 	}
 
 	[RPC]
-	public void FoundOpponent(PhotonMessageInfo info){
-		PhotonNetwork.JoinOrCreateRoom(info.sender.name,new RoomOptions(){maxPlayers = 2},null);
+	public void EnterGameScene(PhotonMessageInfo info){
+		PhotonNetwork.LoadLevel("Game");
 	}
 
 	// Update is called once per frame
