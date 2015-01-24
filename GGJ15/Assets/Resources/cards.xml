@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<populate>
+	<peopleCards>
+	<card>
+	  <title>Jock</title>
+	  <img>/fileext</img>
+	  <resource>2</resource>
+	  <value>1</value>
+	  <entertainment>0</entertainment>
+	  <effect>Remove fat guy</effect>
+	  <number>8</number>
+	</card>
+	<card>
+	  <title>Fat Guy</title>
+	  <img>/fileext</img>
+	  <resource>-3</resource>
+	  <value>1</value>
+	  <entertainment>0</entertainment>
+	  <effect>All chicks +1 resources</effect>
+	  <number>8</number>
+	</card>
+	<card>
+	  <title>Slutty Chick</title>
+	  <img>/fileext</img>
+	  <resource>0</resource>
+	  <value>1</value>
+	  <entertainment>0</entertainment>
+	  <effect>Goes to party with less fat guys</effect>
+	  <number>8</number>
+	</card>
+	<card>
+	  <title>Popular Chick</title>
+	  <img>/fileext</img>
+	  <resource>1</resource>
+	  <value>1</value>
+	  <entertainment>0</entertainment>
+	  <effect>When played with jock people +1</effect>
+	  <number>12</number>
+	</card>
+	<card>
+	  <title>Funny Guy</title>
+	  <img>/fileext</img>
+	  <resource>1</resource>
+	  <value>1</value>
+	  <entertainment>0</entertainment>
+	  <effect>+1 Entertainment/+1 bonus for extra funny guy</effect>
+	  <number>8</number>
+	</card>
+	<card>
+	  <title>Couple</title>
+	  <img>/fileext</img>
+	  <resource>3</resource>
+	  <value>2</value>
+	  <entertainment>0</entertainment>
+	  <effect>after # of turns go up +2</effect>
+	  <number>5</number>
+	</card>
+	<card>
+	  <title>Player</title>
+	  <img>/fileext</img>
+	  <resource>5</resource>
+	  <value>3</value>
+	  <entertainment>0</entertainment>
+	  <effect>Remove couple from game.</effect>
+	  <number>5</number>
+	</card>
+	<card>
+	  <title>Smart Chick</title>
+	  <img>/fileext</img>
+	  <resource>1</resource>
+	  <value>1</value>
+	  <entertainment>0</entertainment>
+	  <effect>...</effect>
+	  <number>6</number>
+	</card>
+	</peopleCards>
+	<entertainmentCards>
+		<card>
+	  		<title>Karaoke</title>
+	  		<img>/fileext</img>
+	  		<resource>5</resource>
+	  		<value>0</value>
+	  		<entertainment>0</entertainment>
+	  		<effect>entertainment</effect>
+	  		<number>2</number>
+		</card>
+		<card>
+	  		<title>Slip and Slide</title>
+	  		<img>/fileext</img>
+	  		<resource>0</resource>
+	  		<value>0</value>
+	  		<entertainment>0</entertainment>
+	  		<effect>entertainment</effect>
+	  		<number>2</number>
+		</card>
+		<card>
+	  		<title>DJ</title>
+	  		<img>/fileext</img>
+	  		<resource>0</resource>
+	  		<value>0</value>
+	  		<entertainment>0</entertainment>
+	  		<effect>entertainment</effect>
+	  		<number>2</number>
+		</card>
+		<card>
+	  		<title>Keg</title>
+	  		<img>/fileext</img>
+	  		<resource>0</resource>
+	  		<value>0</value>
+	  		<entertainment>0</entertainment>
+	  		<effect>entertainment/resource</effect>
+	  		<number>2</number>
+		</card>
+		<card>
+	  		<title>Mud Wrestling</title>
+	  		<img>/fileext</img>
+	  		<resource>0</resource>
+	  		<value>0</value>
+	  		<entertainment>0</entertainment>
+	  		<effect>entertainment</effect>
+	  		<number>2</number>
+		</card>
+		<card>
+	  		<title>Pizza</title>
+	  		<img>/fileext</img>
+	  		<resource>0</resource>
+	  		<value>0</value>
+	  		<entertainment>0</entertainment>
+	  		<effect>entertainment/resource</effect>
+	  		<number>3</number>
+		</card>
+		<card>
+	  		<title>Beer Pong</title>
+	  		<img>/fileext</img>
+	  		<resource>0</resource>
+	  		<value>0</value>
+	  		<entertainment>0</entertainment>
+	  		<effect>entertainment/resource</effect>
+	  		<number>2</number>
+		</card>
+	</entertainmentCards>
+	<partyFouls>
+		<card>
+	  		<title>Leaving with another guys girl</title>
+	  		<img>/fileext</img>
+	  		<resource>0</resource>
+	  		<value>0</value>
+	  		<entertainment>0</entertainment>
+	  		<effect>Remove 1 person from both sides</effect>
+	  		<number>2</number>
+		</card>
+		<card>
+	  		<title>Losing your lunch</title>
+	  		<img>/fileext</img>
+	  		<resource>0</resource>
+	  		<value>0</value>
+	  		<entertainment>0</entertainment>
+	  		<effect>Remove 1 person</effect>
+	  		<number>1</number>
+		</card>
+		<card>
+	  		<title>Throwing a punch</title>
+	  		<img>/fileext</img>
+	  		<resource>0</resource>
+	  		<value>0</value>
+	  		<entertainment>0</entertainment>
+	  		<effect>Remove Jock + add to entertainment</effect>
+	  		<number>2</number>
+		</card>
+		<card>
+	  		<title>Spill Beer</title>
+	  		<img>/fileext</img>
+	  		<resource>0</resource>
+	  		<value>0</value>
+	  		<entertainment>0</entertainment>
+	  		<effect># Resources</effect>
+	  		<number>3</number>
+		</card>
+		<card>
+	  		<title>Kiss and Tell</title>
+	  		<img>/fileext</img>
+	  		<resource>0</resource>
+	  		<value>0</value>
+	  		<entertainment>0</entertainment>
+	  		<effect>Couple = /2</effect>
+	  		<number>2</number>
+		</card>
+		<card>
+	  		<title>Losing your cool</title>
+	  		<img>/fileext</img>
+	  		<resource>0</resource>
+	  		<value>0</value>
+	  		<entertainment>0</entertainment>
+	  		<effect>Reduce Player to +1</effect>
+	  		<number>2</number>
+		</card>
+		<card>
+	  		<title>Talking about work</title>
+	  		<img>/fileext</img>
+	  		<resource>0</resource>
+	  		<value>0</value>
+	  		<entertainment>0</entertainment>
+	  		<effect># Entertainment</effect>
+	  		<number>3</number>
+		</card>
+	</partyFouls>
+	<resourceCards>
+		<card>
+			<bonus>1</bonus>
+			<number>15</number>
+		</card>
+		<card>
+			<bonus>2</bonus>
+			<number>15</number>
+		</card>
+		<card>
+			<bonus>3</bonus>
+			<number>10</number>
+		</card>
+		<card>
+			<bonus>4</bonus>
+			<number>10</number>
+		</card>
+		<card>
+			<bonus>5</bonus>
+			<number>5</number>
+		</card>
+	</resourceCards>
+</populate>
