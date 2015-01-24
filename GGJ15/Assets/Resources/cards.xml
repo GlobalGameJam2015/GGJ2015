@@ -206,23 +206,48 @@
 	</partyFouls>
 	<resourceCards>
 		<card>
-			<bonus>1</bonus>
+			<title>Resource</title>
+	  		<img>/fileext</img>
+	  		<resource>1</resource>
+	  		<value>0</value>
+	  		<entertainment>0</entertainment>
+	  		<effect></effect>
 			<number>15</number>
 		</card>
 		<card>
-			<bonus>2</bonus>
+			<title>Resource</title>
+	  		<img>/fileext</img>
+	  		<resource>2</resource>
+	  		<value>0</value>
+	  		<entertainment>0</entertainment>
+	  		<effect></effect>
 			<number>15</number>
 		</card>
 		<card>
-			<bonus>3</bonus>
+			<title>Resource</title>
+	  		<img>/fileext</img>
+	  		<resource>3</resource>
+	  		<value>0</value>
+	  		<entertainment>0</entertainment>
+	  		<effect></effect>
 			<number>10</number>
 		</card>
 		<card>
-			<bonus>4</bonus>
+			<title>Resource</title>
+	  		<img>/fileext</img>
+	  		<resource>4</resource>
+	  		<value>0</value>
+	  		<entertainment>0</entertainment>
+	  		<effect></effect>
 			<number>10</number>
 		</card>
 		<card>
-			<bonus>5</bonus>
+			<title>Resource</title>
+	  		<img>/fileext</img>
+	  		<resource>5</resource>
+	  		<value>0</value>
+	  		<entertainment>0</entertainment>
+	  		<effect></effect>
 			<number>5</number>
 		</card>
 	</resourceCards>
