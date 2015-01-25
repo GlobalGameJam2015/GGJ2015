@@ -20,24 +20,46 @@ public class GameManager : Photon.MonoBehaviour {
 
 	//List of cards in hand
 	public List<Card> Hand = new List<Card>();
-	public List<Card> SecondHand = new List<Card>();
+	private int OpponentHandCount;
 
 	//temp
 	private List<bool> mulligans = new List<bool>();
 
-	//Are you in mulligan phase
-	public bool Mulligan;
-
 	//Game Variables
 	public int People;
+	public int TotalResources;
 	public int _Resources;
 	public int Entertainment;
 	public FieldCards Field;
+	public int CardMax = 5;
+	public bool YourTurn;
+
+	//GUISTYLES
+	public GUIStyle Title;
+	public GUIStyle ResourceText;
+	public GUIStyle Numbers;
+	public GUIStyle Description;
+	public GUIStyle Points;
+	public GUIStyle Invisible = new GUIStyle();
 
 	// Use this for initialization
 	void Start () {
 		Debug.Log("YOU ARE NOW IN THE GAME SCENE");
 		Deck = GetComponent<DeckBuilder>();
+	}
+
+	public IEnumerator InitialDraw(){
+		for(int i = 0; i < 4; i++){
+			DrawCard();
+			yield return new WaitForSeconds(1);
+		}
+		StartCoroutine(StartTurn());
+	}
+
+	public IEnumerator StartTurn(){
+		DrawCard();
+		yield return new WaitForSeconds(1);
+		YourTurn = true;
 	}
 
 	//Draw a card
@@ -47,97 +69,88 @@ public class GameManager : Photon.MonoBehaviour {
 		//TODO: Animation and visual of card being drawn into hand
 	}
 
-	//Draw cards for mulligan phase (num = number of cards to draw, mulligan = has mulligan started or ended)
-	public IEnumerator DrawForMulligan(int num, bool mulligan){
-		//Loop through and draw the correct number of cards
-		for(int i = 0; i < num; i++){
-			DrawCard();
-			mulligans.Add(false);
-			yield return new WaitForSeconds(1);
-		}
-		Mulligan = mulligan;
-		if(!Mulligan){
-			if(MultiPlayer){
-				if(PhotonNetwork.isMasterClient)
-					photonView.RPC("PassMulligan",PhotonTargets.Others);
-				else
-					photonView.RPC("StartTurn",PhotonTargets.Others);
-			}
-		}
-	}
-
 	void OnGUI(){
 		if(MultiPlayer){
-			//Set the total number of mulliganed cards
-			int Total = 0;
-			foreach(bool mull in mulligans){
-				if(mull)
-					Total++;
-			}
-
 			//begin a GUI group for the cards in your hand
-			GUI.BeginGroup(new Rect((Screen.width-(Hand.Count*110))/2,Screen.height-200,Hand.Count*110,150));
+			GUI.BeginGroup(new Rect((Screen.width-(Hand.Count*190))/2,Screen.height-295,Hand.Count*190,275));
 			for(int i = 0; i < Hand.Count; i++){
-				GUI.color = Color.white;
-				//Turn them red if they are to be mulliganed
-				if(mulligans[i])
-					GUI.color = Color.red;
 
-				//Make sure the total mulligans does not exceed 3
-				if(Total < 3){
-					//Alternate the mulligan of this button (bool)
-					if(GUI.Button(new Rect(i*110,0,100,150),Hand[i].Title)){
-						mulligans[i] = !mulligans[i];
+				if(Hand[i].Type == CardTypes.People){
+					GUI.BeginGroup(new Rect(i*190,0,190,275));
+					
+					GUI.DrawTexture(new Rect(0,0,190,275),Hand[i].Image);
+					GUI.Label(new Rect(5,8,185,20),Hand[i].Title,Title);
+					GUI.Label(new Rect(10,243,20,20),Hand[i].Resource.ToString(),Numbers);
+					GUI.Label(new Rect(160,243,20,20),Hand[i].Value.ToString(),Numbers);
+					GUI.Label(new Rect(30,190,130,50),Hand[i].Effect,Description);
+
+					GUI.EndGroup();
+
+					if(GUI.Button(new Rect(i*190,0,190,275),"",Invisible)){
+						if(_Resources >= Hand[i].Resource){
+							Debug.Log("SELECT CARD");
+						}
+						else{
+							Debug.Log("Not enough Resources");
+						}
 					}
 				}
-				else{
-					//Set the mulligan to false for this button
-					if(GUI.Button(new Rect(i*110,0,100,150),Hand[i].Title)){
-						mulligans[i] = false;
+				else if(Hand[i].Type == CardTypes.Entertainment || Hand[i].Type == CardTypes.Foul){
+					GUI.BeginGroup(new Rect(i*190,0,190,275));
+					
+					GUI.DrawTexture(new Rect(0,0,190,275),Hand[i].Image);
+					GUI.Label(new Rect(5,8,185,20),Hand[i].Title,Title);
+					GUI.Label(new Rect(10,243,20,20),Hand[i].Resource.ToString(),Numbers);
+					//GUI.Label(new Rect(160,243,20,20),Hand[i].Value.ToString(),Numbers);
+					GUI.Label(new Rect(30,190,130,50),Hand[i].Effect,Description);
+					
+					GUI.EndGroup();
+
+					if(GUI.Button(new Rect(i*190,0,190,275),"",Invisible)){
+						if(TotalResources >= Hand[i].Resource){
+							TotalResources -= Hand[i].Resource;
+							_Resources = TotalResources;
+							if(Hand[i].Type == CardTypes.Entertainment){
+								Entertainment += Hand[i].Amount;
+							}
+							else{
+								//DO NEGATIVE EVENTS EFFECT
+							}
+
+							Hand.RemoveAt(i);
+						}
+						else{
+							Debug.Log("Not enough Resources");
+						}
 					}
 				}
+				else if(Hand[i].Type == CardTypes.Resource){
+					GUI.BeginGroup(new Rect(i*190,0,190,275));
+					
+					GUI.DrawTexture(new Rect(0,0,190,275),Hand[i].Image);
+					GUI.Label(new Rect(5,8,185,20),Hand[i].Title,Title);
+					
+					GUI.Box(new Rect(30,40,130,130),Hand[i].Resource.ToString(),ResourceText);
+					
+					GUI.EndGroup();
+
+					if(GUI.Button(new Rect(i*190,0,190,275),"",Invisible)){
+						TotalResources += Hand[i].Resource;
+						_Resources = TotalResources;
+						Hand.RemoveAt(i);
+						Debug.Log("SELECT CARD");
+					}
+				}				
 			}
 			GUI.EndGroup();
 
-			//Display the Discard button if you are able to mulligan
-			GUI.color = Color.white;
-			if(Mulligan){
-				if(GUI.Button(new Rect((Screen.width-80)/2,Screen.height-50,100,50),"Discard")){
-					Total = 0;
-					List<int> nums = new List<int>();
-					//add the numbers of the cards to be mulliganed
-					for(int i = 0; i < mulligans.Count; i++){
-						if(mulligans[i]){
-							nums.Add(i);
-						}
-					}
-					//Reverse the list of mulliganed card numbers
-					nums.Reverse();
-
-					//sort through mulliganed numbers to start removing/replacing the cards (back to the deck).
-					foreach(int n in nums){
-						mulligans[n] = false;
-						Deck.ReplaceCard(Hand[n]);
-						Hand.RemoveAt(n);
-						Total++;
-					}
-					//Draw for this stage of the mulligan
-					StartCoroutine(DrawForMulligan(Total,false));
-				}
-			}
+			GUI.BeginGroup(new Rect(10,(Screen.height-225)/2-100,120,225));
+			GUI.Label(new Rect(10,0,100,20),"Resources",Title);
+			GUI.Box(new Rect(20,20,70,85),TotalResources.ToString(),Points);
+			GUI.Label(new Rect(0,120,120,20),"Entertainment",Title);
+			GUI.Box(new Rect(25,140,70,85),Entertainment.ToString(),Points);
+			GUI.EndGroup();
 		}
-	}
-
-	//NETWORK FUNCTIONS
-	// Begin Turn
-	[RPC]
-	public void StartTurn () {
-		
-	}
-
-	[RPC]
-	void PassMulligan(){
-		StartCoroutine(DrawForMulligan(7,true));
 	}
 
 	[RPC]
@@ -156,22 +169,5 @@ public class GameManager : Photon.MonoBehaviour {
 			_Resources += resources;
 		if(entertrainment != 0)
 			Entertainment += entertrainment;
-	}
-
-
-	//SINGLE PLAYER
-	public IEnumerator BeginSinglePlayer(){
-		for(int i = 0; i < 7; i++){
-			DrawSingle();
-			yield return new WaitForSeconds(1);
-		}
-	}
-
-	void DrawSingle(){
-		Hand.Add(Deck.Shuffled[0]);
-		SecondHand.Add(Deck.Shuffled[1]);
-		Deck.Shuffled.RemoveAt(0);
-		Deck.Shuffled.RemoveAt(0);
-		//TODO: Animation and visual of card being drawn into hand
 	}
 }

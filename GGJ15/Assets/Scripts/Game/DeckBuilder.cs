@@ -9,7 +9,8 @@ using System.Xml;
 [System.Serializable]
 public enum CardTypes{
 	People = 0,
-	Events = 1,
+	Entertainment = 1,
+	Foul = 2,
 	Resource = 3,
 	Party = 4,
 	PartyLevel = 5,
@@ -79,12 +80,14 @@ public class DeckBuilder : Photon.MonoBehaviour {
 							if(int.Parse(cardTitle.InnerText) == 0)
 								Cards[Cards.Count-1].Type = CardTypes.People;
 							if(int.Parse(cardTitle.InnerText) == 1)
-								Cards[Cards.Count-1].Type = CardTypes.Events;
+								Cards[Cards.Count-1].Type = CardTypes.Entertainment;
 							if(int.Parse(cardTitle.InnerText) == 2)
-								Cards[Cards.Count-1].Type = CardTypes.Resource;
+								Cards[Cards.Count-1].Type = CardTypes.Foul;
 							if(int.Parse(cardTitle.InnerText) == 3)
-								Cards[Cards.Count-1].Type = CardTypes.Party;
+								Cards[Cards.Count-1].Type = CardTypes.Resource;
 							if(int.Parse(cardTitle.InnerText) == 4)
+								Cards[Cards.Count-1].Type = CardTypes.Party;
+							if(int.Parse(cardTitle.InnerText) == 5)
 								Cards[Cards.Count-1].Type = CardTypes.PartyLevel;
 						}
 						if (cardTitle.Name == "title")
@@ -148,13 +151,14 @@ public class DeckBuilder : Photon.MonoBehaviour {
 
 		//Send RPC of shuffled deck string to second player
 		if(Manager.MultiPlayer)
-			photonView.RPC("SendShuffledDeck",PhotonTargets.Others,DeckString);
+			//photonView.RPC("SendShuffledDeck",PhotonTargets.Others,DeckString);
 
 		//Start Player 1's turn
 		if(Manager.MultiPlayer)
-			StartCoroutine(Manager.DrawForMulligan(7,true));
-		else
-			StartCoroutine(Manager.BeginSinglePlayer());
+			StartCoroutine(Manager.InitialDraw());
+			//StartCoroutine(Manager.DrawForMulligan(7,true));
+		//else
+			//StartCoroutine(Manager.BeginSinglePlayer());
 	}
 
 	//Replace a card back into the deck at a random spot

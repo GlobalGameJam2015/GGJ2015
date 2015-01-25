@@ -3,10 +3,10 @@ using System.Collections;
 
 public class GoodEvent : MonoBehaviour {
 
-	public int Num;
+	public static int Num;
 
-	void Played () {
+	public static void Played () {
 		GameObject.Find("GameManager").GetComponent<GameManager>().Entertainment += Num;
-		Destroy(this);
+		//Destroy(this);
 	}
 }

@@ -152,7 +152,7 @@
 	  		<title>Karaoke</title>
 	  		<Gender></Gender>
 	  		<img>Card_E_Karaoke</img>
-	  		<resource>5</resource>
+	  		<resource>2</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
 	  		<effect>+2 Entertainment</effect>
@@ -169,15 +169,15 @@
 	  		<title>Slip and Slide</title>
 	  		<Gender></Gender>
 	  		<img>Card_E_SlipNSlide</img>
-	  		<resource>0</resource>
+	  		<resource>3</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
-	  		<effect>+4 Entertainment</effect>
+	  		<effect>+3 Entertainment</effect>
 	  		<player>Self</player>
 	  		<targettype>Self</targettype>
 			<target></target>
 			<action>Add</action>
-			<amount>4</amount>
+			<amount>3</amount>
 			<actiontarget>Entertainment</actiontarget>
 	  		<number>2</number>
 		</card>
@@ -186,15 +186,15 @@
 	  		<title>DJ</title>
 	  		<Gender></Gender>
 	  		<img>Card_E_DJ</img>
-	  		<resource>0</resource>
+	  		<resource>3</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
-	  		<effect>+4 Entertainment</effect>
+	  		<effect>+3 Entertainment</effect>
 	  		<player>Self</player>
 	  		<targettype>Self</targettype>
 			<target></target>
 			<action>Add</action>
-			<amount>4</amount>
+			<amount>3</amount>
 			<actiontarget>Entertainment</actiontarget>
 	  		<number>2</number>
 		</card>
@@ -203,7 +203,7 @@
 	  		<title>Keg</title>
 	  		<Gender></Gender>
 	  		<img>Card_E_Kegs</img>
-	  		<resource>0</resource>
+	  		<resource>2</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
 	  		<effect>+2 Entertainment</effect>
@@ -220,15 +220,15 @@
 	  		<title>Mud Wrestling</title>
 	  		<Gender></Gender>
 	  		<img>Card_E_MudWrestling</img>
-	  		<resource>0</resource>
+	  		<resource>5</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
-	  		<effect>+6 Entertainment</effect>
+	  		<effect>+5 Entertainment</effect>
 	  		<player>Self</player>
 	  		<targettype>Self</targettype>
 			<target></target>
 			<action>Add</action>
-			<amount>6</amount>
+			<amount>5</amount>
 			<actiontarget>Entertainment</actiontarget>
 	  		<number>2</number>
 		</card>
@@ -237,7 +237,7 @@
 	  		<title>Pizza</title>
 	  		<Gender></Gender>
 	  		<img>Card_E_Pizza</img>
-	  		<resource>0</resource>
+	  		<resource>1</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
 	  		<effect>+1 Entertainment</effect>
@@ -254,7 +254,7 @@
 	  		<title>Beer Pong</title>
 	  		<Gender></Gender>
 	  		<img>Card_E_BeerPong</img>
-	  		<resource>0</resource>
+	  		<resource>3</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
 	  		<effect>+3 Entertainment</effect>
@@ -269,7 +269,7 @@
 	</entertainmentCards>
 	<partyFouls>
 		<card>
-			<type>1</type>
+			<type>2</type>
 	  		<title>Losing your lunch</title>
 	  		<Gender></Gender>
 	  		<img>Card_PF_LosingLunch</img>
@@ -286,7 +286,7 @@
 	  		<number>1</number>
 		</card>
 		<card>
-			<type>1</type>
+			<type>2</type>
 	  		<title>Throwing a punch</title>
 	  		<Gender></Gender>
 	  		<img>Card_PF_ThrowingPunch</img>
@@ -303,7 +303,7 @@
 	  		<number>2</number>
 		</card>
 		<card>
-			<type>1</type>
+			<type>2</type>
 	  		<title>Spill Beer</title>
 	  		<Gender></Gender>
 	  		<img>Card_PF_SpillingBeer</img>
@@ -320,7 +320,7 @@
 	  		<number>3</number>
 		</card>
 		<card>
-			<type>1</type>
+			<type>2</type>
 	  		<title>Kiss and Tell</title>
 	  		<Gender></Gender>
 	  		<img>Card_PF_KissAndTell</img>
@@ -337,7 +337,7 @@
 	  		<number>2</number>
 		</card>
 		<card>
-			<type>1</type>
+			<type>2</type>
 	  		<title>Losing your cool</title>
 	  		<Gender></Gender>
 	  		<img>Card_PF_LosingCool</img>
@@ -354,7 +354,7 @@
 	  		<number>2</number>
 		</card>
 		<card>
-			<type>1</type>
+			<type>2</type>
 	  		<title>Talking about work</title>
 	  		<Gender></Gender>
 	  		<img>Card_PF_TalkAboutWork</img>
@@ -373,10 +373,10 @@
 	</partyFouls>
 	<resourceCards>
 		<card>
-			<type>2</type>
+			<type>3</type>
 			<title>Resource</title>
 			<Gender></Gender>
-	  		<img>/fileext</img>
+	  		<img>Card_Resources</img>
 	  		<resource>1</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
@@ -390,10 +390,10 @@
 			<number>15</number>
 		</card>
 		<card>
-			<type>2</type>
+			<type>3</type>
 			<title>Resource</title>
 			<Gender></Gender>
-	  		<img>/fileext</img>
+	  		<img>Card_Resources</img>
 	  		<resource>2</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
@@ -407,10 +407,10 @@
 			<number>15</number>
 		</card>
 		<card>
-			<type>2</type>
+			<type>3</type>
 			<title>Resource</title>
 			<Gender></Gender>
-	  		<img>/fileext</img>
+	  		<img>Card_Resources</img>
 	  		<resource>3</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
@@ -424,10 +424,10 @@
 			<number>10</number>
 		</card>
 		<card>
-			<type>2</type>
+			<type>3</type>
 			<title>Resource</title>
 			<Gender></Gender>
-	  		<img>/fileext</img>
+	  		<img>Card_Resources</img>
 	  		<resource>4</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>

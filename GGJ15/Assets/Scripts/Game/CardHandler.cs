@@ -43,9 +43,9 @@ public class CardHandler : MonoBehaviour {
 		if(PlayedCard.Type == CardTypes.People){
 			DetectPlayer();
 		}
-		else if(PlayedCard.Type == CardTypes.Events){
+		//else if(PlayedCard.Type == CardTypes.Events){
 			
-		}
+		//}
 		else if(PlayedCard.Type == CardTypes.Resource){
 			
 		}
