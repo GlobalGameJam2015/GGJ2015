@@ -320,9 +320,6 @@ public class GameManager : Photon.MonoBehaviour {
 	
 	[RPC]
 	void SendInitialDraw(){
-		for(int i = 0; i < 4; i++){
-			DrawCard(1);
-		}
 		if(PhotonNetwork.isMasterClient){
 			StartCoroutine(StartTurn());
 		}
