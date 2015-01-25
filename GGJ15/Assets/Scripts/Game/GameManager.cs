@@ -84,8 +84,9 @@ public class GameManager : Photon.MonoBehaviour {
 		PeoplePoints = 0;
 		EntertainmentPoints = 0;
 		foreach(Card card in Field.Self){
-			PeoplePoints += card.Value;
-			EntertainmentPoints = card.Entertainment;
+			Person tempPerson = card.CardObj.GetComponent<Person>();
+			PeoplePoints += tempPerson.PersonCount;
+			EntertainmentPoints + tempPerson.Entertainment;
 		}
 		photonView.RPC("PassTurn",PhotonTargets.Others);
 		YourTurn = false;
