@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(Person))]
-public class Jock : MonoBehaviour {
+public class SmartChick : MonoBehaviour {
 
 
 	private GameObject Target;
@@ -16,11 +16,6 @@ public class Jock : MonoBehaviour {
 	void Played () {
 		Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		person = this.GetComponent<Person>();
-		foreach(Card card in Manager.Field.Self){
-			if(card.Title == "Fat Guy"){
-				Manager.Field.Self.Remove(card);
-				return;
-			}
-		}
+		Manager.SmartChickEff = 2;
 	}
 }
