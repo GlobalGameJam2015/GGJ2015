@@ -68,7 +68,7 @@ public class GameManager : Photon.MonoBehaviour {
 			DrawCard();
 			yield return new WaitForSeconds(1);
 		}
-		//photonView.RPC("SendInitialDraw",PhotonTargets.Others);
+		photonView.RPC("SendInitialDraw",PhotonTargets.Others);
 		StartCoroutine(StartTurn());
 	}
 

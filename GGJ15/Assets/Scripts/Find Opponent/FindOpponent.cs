@@ -9,8 +9,8 @@ public class FindOpponent : Photon.MonoBehaviour {
 	void Start () {
 		Debug.Log("FIND OPPONENT");
 		Debug.Log(PhotonNetwork.connected);
-		Debug.Log(PhotonNetwork.countOfRooms);
-		if(PhotonNetwork.countOfRooms > 1){
+		Debug.Log(PhotonNetwork.countOfPlayers);
+		if(PhotonNetwork.countOfPlayers > 1){
 			PhotonNetwork.JoinRandomRoom();
 			photonView.RPC("FoundOpponent",PhotonNetwork.otherPlayers[0]);
 		}
