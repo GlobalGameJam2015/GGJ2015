@@ -36,4 +36,7 @@ MonoBehaviour:
   - FoundOpponent
   - EnterGameScene
   - SendShuffledDeck
+  - PassMulligan
+  - StartTurn
+  - PassEffect
   DisableAutoOpenWizard: 0

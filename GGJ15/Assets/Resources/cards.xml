@@ -2,252 +2,442 @@
 <populate>
 	<peopleCards>
 	<card>
+	  <type>0</type>
 	  <title>Jock</title>
-	  <img>/fileext</img>
+	  <Gender>Guy</Gender>
+	  <img>Card_P_Jock</img>
 	  <resource>2</resource>
 	  <value>1</value>
 	  <entertainment>0</entertainment>
-	  <effect>Remove fat guy</effect>
+	  <effect>Remove 1 Fat Guy from your party.</effect>
+	  <player>Self</player>
+	  <targettype>Opponet</targettype>
+	  <target>Fat Guy</target>
+	  <targetcount>1</targetcount>
+	  <action>Remove</action>
+	  <amount>0</amount>
+	  <actiontarget>Card</actiontarget>
 	  <number>8</number>
 	</card>
 	<card>
+	  <type>0</type>
 	  <title>Fat Guy</title>
-	  <img>/fileext</img>
+	  <Gender>Guy</Gender>
+	  <img>Card_P_FatGuy</img>
 	  <resource>-3</resource>
 	  <value>1</value>
 	  <entertainment>0</entertainment>
-	  <effect>All chicks +1 resources</effect>
-	  <number>8</number>
+	  <effect>Give to your opponent. All opponent chicks require +1 resource (stacks).</effect>
+	  <player>Opponent</player>
+	  <targettype>Opponet</targettype>
+	  <target>Chicks</target>
+	  <targetcount>-1</targetcount>
+	  <action>Add</action>
+	  <amount>0</amount>
+	  <actiontarget>Resource</actiontarget>
+	  <number>5</number>
 	</card>
 	<card>
+	  <type>0</type>
 	  <title>Slutty Chick</title>
+	  <Gender>Chick</Gender>
 	  <img>/fileext</img>
 	  <resource>0</resource>
 	  <value>1</value>
 	  <entertainment>0</entertainment>
-	  <effect>Goes to party with less fat guys</effect>
-	  <number>8</number>
+	  <effect>Goes to whoever's pary has the fewest Fat Guys.</effect>
+	  <player>Any</player>
+	  <targettype>All</targettype>
+	  <target>Fat Guy</target>
+	  <targetcount>-1</targetcount>
+	  <action>Greater</action>
+	  <amount>0</amount>
+	  <actiontarget></actiontarget>
+	  <number>5</number>
 	</card>
 	<card>
+	  <type>0</type>
 	  <title>Popular Chick</title>
-	  <img>/fileext</img>
+	  <Gender>Chick</Gender>
+	  <img>Card_P_PopularGirl</img>
 	  <resource>1</resource>
 	  <value>1</value>
 	  <entertainment>0</entertainment>
-	  <effect>When played with jock people +1</effect>
+	  <effect>On play, if a Jock is at the party get a +1 People bonus.</effect>
+	  <player>Self</player>
+	  <targettype>Self</targettype>
+	  <target>Jock</target>
+	  <targetcount>-1</targetcount>
+	  <action>Check#Add</action>
+	  <amount>0</amount>
+	  <actiontarget>Jock#People</actiontarget>
 	  <number>12</number>
 	</card>
 	<card>
+	  <type>0</type>
 	  <title>Funny Guy</title>
-	  <img>/fileext</img>
+	  <Gender>Guy</Gender>
+	  <img>Card_P_FunnyGuyt</img>
 	  <resource>1</resource>
 	  <value>1</value>
 	  <entertainment>0</entertainment>
-	  <effect>+1 Entertainment/+1 bonus for extra funny guy</effect>
+	  <effect>+1 Entertainment, +3 for each Funny Guy played after.</effect>
+	  <player>Self</player>
+	  <targettype>Self</targettype>
+	  <target>Funny Guy</target>
+	  <targetcount>-1</targetcount>
+	  <action>Greater</action>
+	  <amount>0</amount>
+	  <actiontarget>Funny Guy</actiontarget>
 	  <number>8</number>
 	</card>
 	<card>
+	  <type>0</type>
 	  <title>Couple</title>
-	  <img>/fileext</img>
+	  <Gender>Both</Gender>
+	  <img>Card_P_Couple</img>
 	  <resource>3</resource>
 	  <value>2</value>
 	  <entertainment>0</entertainment>
-	  <effect>after # of turns go up +2</effect>
+	  <effect>Once after 2 turns Couple gains +2 People.</effect>
+	  <player>Self</player>
+	  <targettype>Self</targettype>
+	  <target>Card</target>
+	  <targetcount>0</targetcount>
+	  <action>Count</action>
+	  <amount>2</amount>
+	  <actiontarget>People</actiontarget>
 	  <number>5</number>
 	</card>
 	<card>
-	  <title>Player</title>
-	  <img>/fileext</img>
+	  <type>0</type>
+	  <title>Playa</title>
+	  <Gender>Guy</Gender>
+	  <img>Card_P_Playa</img>
 	  <resource>5</resource>
 	  <value>3</value>
 	  <entertainment>0</entertainment>
-	  <effect>Remove couple from game.</effect>
+	  <effect>Can take up to 2 chicks from your opponent.</effect>
+	  <player>Self</player>
+	  <targettype>Opponent</targettype>
+	  <target>Chicks</target>
+	  <targetcount>-1</targetcount>
+	  <action>Take</action>
+	  <amount>2</amount>
+	  <actiontarget></actiontarget>
 	  <number>5</number>
 	</card>
 	<card>
+	  <type>0</type>
 	  <title>Smart Chick</title>
-	  <img>/fileext</img>
+	  <Gender>Guy</Gender>
+	  <img>Card_P_SmartChick</img>
 	  <resource>1</resource>
 	  <value>1</value>
 	  <entertainment>0</entertainment>
-	  <effect>...</effect>
-	  <number>6</number>
+	  <effect>On Play, Event cards cost 1/2 for the remainder of this turn.</effect>
+	  <player>Self</player>
+	  <targettype>Hand</targettype>
+	  <target>Events</target>
+	  <targetcount>0</targetcount>
+	  <action>Divide</action>
+	  <amount>2</amount>
+	  <actiontarget>Event</actiontarget>
+	  <number>5</number>
 	</card>
 	</peopleCards>
 	<entertainmentCards>
 		<card>
+			<type>1</type>
 	  		<title>Karaoke</title>
-	  		<img>/fileext</img>
+	  		<Gender></Gender>
+	  		<img>Card_E_Karaoke</img>
 	  		<resource>5</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
-	  		<effect>entertainment</effect>
+	  		<effect>+2 Entertainment</effect>
+	  		<player>Self</player>
+	  		<targettype>Self</targettype>
+			<target></target>
+			<action>Add</action>
+			<amount>2</amount>
+			<actiontarget>Entertainment</actiontarget>
 	  		<number>2</number>
 		</card>
 		<card>
+			<type>1</type>
 	  		<title>Slip and Slide</title>
-	  		<img>/fileext</img>
+	  		<Gender></Gender>
+	  		<img>Card_E_SlipNSlide</img>
 	  		<resource>0</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
-	  		<effect>entertainment</effect>
+	  		<effect>+4 Entertainment</effect>
+	  		<player>Self</player>
+	  		<targettype>Self</targettype>
+			<target></target>
+			<action>Add</action>
+			<amount>4</amount>
+			<actiontarget>Entertainment</actiontarget>
 	  		<number>2</number>
 		</card>
 		<card>
+			<type>1</type>
 	  		<title>DJ</title>
-	  		<img>/fileext</img>
+	  		<Gender></Gender>
+	  		<img>Card_E_DJ</img>
 	  		<resource>0</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
-	  		<effect>entertainment</effect>
+	  		<effect>+4 Entertainment</effect>
+	  		<player>Self</player>
+	  		<targettype>Self</targettype>
+			<target></target>
+			<action>Add</action>
+			<amount>4</amount>
+			<actiontarget>Entertainment</actiontarget>
 	  		<number>2</number>
 		</card>
 		<card>
+			<type>1</type>
 	  		<title>Keg</title>
-	  		<img>/fileext</img>
+	  		<Gender></Gender>
+	  		<img>Card_E_Kegs</img>
 	  		<resource>0</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
-	  		<effect>entertainment/resource</effect>
+	  		<effect>+2 Entertainment</effect>
+	  		<player>Self</player>
+	  		<targettype>Self</targettype>
+			<target></target>
+			<action>Add</action>
+			<amount>2</amount>
+			<actiontarget>Entertainment</actiontarget>
 	  		<number>2</number>
 		</card>
 		<card>
+			<type>1</type>
 	  		<title>Mud Wrestling</title>
-	  		<img>/fileext</img>
+	  		<Gender></Gender>
+	  		<img>Card_E_MudWrestling</img>
 	  		<resource>0</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
-	  		<effect>entertainment</effect>
+	  		<effect>+6 Entertainment</effect>
+	  		<player>Self</player>
+	  		<targettype>Self</targettype>
+			<target></target>
+			<action>Add</action>
+			<amount>6</amount>
+			<actiontarget>Entertainment</actiontarget>
 	  		<number>2</number>
 		</card>
 		<card>
+			<type>1</type>
 	  		<title>Pizza</title>
-	  		<img>/fileext</img>
+	  		<Gender></Gender>
+	  		<img>Card_E_Pizza</img>
 	  		<resource>0</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
-	  		<effect>entertainment/resource</effect>
+	  		<effect>+1 Entertainment</effect>
+	  		<player>Self</player>
+	  		<targettype>Self</targettype>
+			<target></target>
+			<action>Add</action>
+			<amount>1</amount>
+			<actiontarget>Entertainment</actiontarget>
 	  		<number>3</number>
 		</card>
 		<card>
+			<type>1</type>
 	  		<title>Beer Pong</title>
-	  		<img>/fileext</img>
+	  		<Gender></Gender>
+	  		<img>Card_E_BeerPong</img>
 	  		<resource>0</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
-	  		<effect>entertainment/resource</effect>
+	  		<effect>+3 Entertainment</effect>
+	  		<player>Self</player>
+	  		<targettype>Self</targettype>
+			<target></target>
+			<action>Add</action>
+			<amount>3</amount>
+			<actiontarget>Entertainment</actiontarget>
 	  		<number>2</number>
 		</card>
 	</entertainmentCards>
 	<partyFouls>
 		<card>
-	  		<title>Leaving with another guys girl</title>
-	  		<img>/fileext</img>
-	  		<resource>0</resource>
-	  		<value>0</value>
-	  		<entertainment>0</entertainment>
-	  		<effect>Remove 1 person from both sides</effect>
-	  		<number>2</number>
-		</card>
-		<card>
+			<type>1</type>
 	  		<title>Losing your lunch</title>
-	  		<img>/fileext</img>
-	  		<resource>0</resource>
+	  		<Gender></Gender>
+	  		<img>Card_PF_LosingLunch</img>
+	  		<resource>8</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
-	  		<effect>Remove 1 person</effect>
+	  		<effect>Remove 1 person from a party.</effect>
+	  		<player>Self</player>
+	  		<targettype>Any</targettype>
+			<target>Person</target>
+			<action>Remove</action>
+			<amount>0</amount>
+			<actiontarget></actiontarget>
 	  		<number>1</number>
 		</card>
 		<card>
+			<type>1</type>
 	  		<title>Throwing a punch</title>
-	  		<img>/fileext</img>
-	  		<resource>0</resource>
+	  		<Gender></Gender>
+	  		<img>Card_PF_ThrowingPunch</img>
+	  		<resource>4</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
-	  		<effect>Remove Jock + add to entertainment</effect>
+	  		<effect>Remove all opponents Jocks and give them, +2 Entertrainment for each.</effect>
+	  		<player>Self</player>
+	  		<targettype>Opponet</targettype>
+			<target>Jocks</target>
+			<action>Remove#Add</action>
+			<amount>2</amount>
+			<actiontarget>Jocks#Entertainment</actiontarget>
 	  		<number>2</number>
 		</card>
 		<card>
+			<type>1</type>
 	  		<title>Spill Beer</title>
-	  		<img>/fileext</img>
-	  		<resource>0</resource>
+	  		<Gender></Gender>
+	  		<img>Card_PF_SpillingBeer</img>
+	  		<resource>2</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
-	  		<effect># Resources</effect>
+	  		<effect>-4 Resources</effect>
+	  		<player>Self</player>
+	  		<targettype>Opponet</targettype>
+			<target></target>
+			<action>Subtract</action>
+			<amount>4</amount>
+			<actiontarget>Resources</actiontarget>
 	  		<number>3</number>
 		</card>
 		<card>
+			<type>1</type>
 	  		<title>Kiss and Tell</title>
-	  		<img>/fileext</img>
-	  		<resource>0</resource>
+	  		<Gender></Gender>
+	  		<img>Card_PF_KissAndTell</img>
+	  		<resource>4</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
-	  		<effect>Couple = /2</effect>
+	  		<effect>Set an opponet's Couple to 1 People and negate their effect if not activated.</effect>
+	  		<player>Self</player>
+	  		<targettype>Opponet</targettype>
+			<target>Couple</target>
+			<action>Set#Negate</action>
+			<amount>1</amount>
+			<actiontarget>People#Effect</actiontarget>
 	  		<number>2</number>
 		</card>
 		<card>
+			<type>1</type>
 	  		<title>Losing your cool</title>
-	  		<img>/fileext</img>
-	  		<resource>0</resource>
+	  		<Gender></Gender>
+	  		<img>Card_PF_LosingCool</img>
+	  		<resource>4</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
-	  		<effect>Reduce Player to +1</effect>
+	  		<effect>Playa loses 1 Chick.</effect>
+	  		<player>Self</player>
+	  		<targettype>Any</targettype>
+			<target>Playa</target>
+			<action>Remove</action>
+			<amount>1</amount>
+			<actiontarget>Chick</actiontarget>
 	  		<number>2</number>
 		</card>
 		<card>
+			<type>1</type>
 	  		<title>Talking about work</title>
-	  		<img>/fileext</img>
-	  		<resource>0</resource>
+	  		<Gender></Gender>
+	  		<img>Card_PF_TalkAboutWork</img>
+	  		<resource>2</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
-	  		<effect># Entertainment</effect>
+	  		<effect>-3 Entertainment</effect>
+	  		<player>Self</player>
+	  		<targettype>Opponent</targettype>
+			<target></target>
+			<action>Subtract</action>
+			<amount>3</amount>
+			<actiontarget>Entertainment</actiontarget>
 	  		<number>3</number>
 		</card>
 	</partyFouls>
 	<resourceCards>
 		<card>
+			<type>2</type>
 			<title>Resource</title>
+			<Gender></Gender>
 	  		<img>/fileext</img>
 	  		<resource>1</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
 	  		<effect></effect>
+	  		<player>Self</player>
+	  		<targettype>Self</targettype>
+			<target></target>
+			<action>Add</action>
+			<amount>1</amount>
+			<actiontarget>Resources</actiontarget>
 			<number>15</number>
 		</card>
 		<card>
+			<type>2</type>
 			<title>Resource</title>
+			<Gender></Gender>
 	  		<img>/fileext</img>
 	  		<resource>2</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
 	  		<effect></effect>
+	  		<player>Self</player>
+	  		<targettype>Self</targettype>
+			<target></target>
+			<action>Add</action>
+			<amount>2</amount>
+			<actiontarget>Resources</actiontarget>
 			<number>15</number>
 		</card>
 		<card>
+			<type>2</type>
 			<title>Resource</title>
+			<Gender></Gender>
 	  		<img>/fileext</img>
 	  		<resource>3</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
 	  		<effect></effect>
+	  		<player>Self</player>
+	  		<targettype>Self</targettype>
+			<target></target>
+			<action>Add</action>
+			<amount>3</amount>
+			<actiontarget>Resources</actiontarget>
 			<number>10</number>
 		</card>
 		<card>
+			<type>2</type>
 			<title>Resource</title>
+			<Gender></Gender>
 	  		<img>/fileext</img>
 	  		<resource>4</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
 	  		<effect></effect>
-			<number>10</number>
-		</card>
-		<card>
-			<title>Resource</title>
-	  		<img>/fileext</img>
-	  		<resource>5</resource>
-	  		<value>0</value>
-	  		<entertainment>0</entertainment>
-	  		<effect></effect>
+	  		<player>Self</player>
+	  		<targettype>Self</targettype>
+			<target></target>
+			<action>Add</action>
+			<amount>2</amount>
+			<actiontarget>Resources</actiontarget>
 			<number>5</number>
 		</card>
 	</resourceCards>
