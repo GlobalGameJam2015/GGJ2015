@@ -44,4 +44,10 @@ public class Person : MonoBehaviour {
 	public void SetEntertainmentMod (int mod){
 		_personMod = mod;
 	}
+
+	public void Played(Card card){
+		_personCount = card.Count;
+		_resourceNeed = card.Resource;
+		_entertainment = card.Entertainment;		
+	}
 }

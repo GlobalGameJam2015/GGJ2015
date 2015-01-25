@@ -7,17 +7,9 @@ public class SluttyChick : MonoBehaviour {
 	
 	private Person person;
 	
-	void Start(){
+	void Played (Card card) {
 		Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		person = this.GetComponent<Person>();
-	}
-	
-	void Update(){
-		Ray ray;
-		
-	}
-	
-	void Played () {
 		person.SetResourceNeed(0);
 		CheckSluttiness();
 

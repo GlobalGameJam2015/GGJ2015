@@ -13,16 +13,8 @@ public class Jock : MonoBehaviour {
 
 	private Person person;
 
-	void Start(){
-		Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
-	}
-
-	void Update(){
-		Ray ray;
-
-	}
-
 	void Played () {
+		Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		person = this.GetComponent<Person>();
 		person.SetResourceNeed(2);
 		foreach(Card card in Manager.Field.Self){
