@@ -27,8 +27,8 @@ public class GameManager : Photon.MonoBehaviour {
 
 	//Game Variables
 	public int People;
-	public int TotalResources;
-	public int _Resources;
+	public int TotalResources = 2;
+	public int _Resources = 2;
 	public int Entertainment;
 	public FieldCards Field;
 	public int CardMax = 5;
@@ -147,7 +147,7 @@ public class GameManager : Photon.MonoBehaviour {
 			//Other HUD
 			GUI.BeginGroup(new Rect(880,490,100,105));
 			GUI.Label(new Rect(0,0,100,20),"Resources",Title);
-			GUI.Box(new Rect(14,20,70,85),TotalResources.ToString(),ResourcePoints);
+			GUI.Box(new Rect(14,20,70,85),_Resources.ToString(),ResourcePoints);
 			GUI.EndGroup();
 
 			GUI.BeginGroup(new Rect(0,490,220,105));
@@ -188,6 +188,7 @@ public class GameManager : Photon.MonoBehaviour {
 
 					if(GUI.Button(new Rect(0,0,190,275),"",Invisible)){
 						if(_Resources >= Hand[i].Resource){
+
 							_Resources -= Hand[i].Resource;
 
 							Hand[i].CardObj = new GameObject();
