@@ -53,14 +53,19 @@ public class Person : MonoBehaviour {
 		_personMod = mod;
 	}
 
+	private GameManager Manager;
 	private Card selfCard;
 	public void MoveToOpponent(){
+		if(Manager == null){
+			Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
+		}
 		transform.parent = transform.parent.parent.FindChild("Opponent");
-		//Manager.Field.Opponets.Add(selfCard);
-		//Manager.Field.Self.Remove(selfCard);
+		Manager.Field.Opponets.Add(selfCard);
+		Manager.Field.Self.Remove(selfCard);
 	}
 
 	public void Played(Card card){
+		Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		_personCount = card.Count;
 		_resourceNeed = card.Resource;
 		_entertainment = card.Entertainment;		
