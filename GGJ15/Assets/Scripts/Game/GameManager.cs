@@ -20,6 +20,7 @@ public class GameManager : Photon.MonoBehaviour {
 
 	//List of cards in hand
 	public List<Card> Hand = new List<Card>();
+	public List<Card> OtherHand = new List<Card>();
 	private Rect HandRect;
 	private float HandYMovement;
 	private string PlayedCardsString;
@@ -65,7 +66,7 @@ public class GameManager : Photon.MonoBehaviour {
 
 	public IEnumerator InitialDraw(){
 		for(int i = 0; i < 4; i++){
-			DrawCard();
+			DrawCard(0);
 			yield return new WaitForSeconds(1);
 		}
 		photonView.RPC("SendInitialDraw",PhotonTargets.Others);
@@ -73,7 +74,7 @@ public class GameManager : Photon.MonoBehaviour {
 
 	public IEnumerator StartTurn(){
 		if(Hand.Count < CardMax){
-			DrawCard();
+			DrawCard(0);
 			yield return new WaitForSeconds(1);
 		}
 		PlayedCardsString = "";
@@ -81,20 +82,25 @@ public class GameManager : Photon.MonoBehaviour {
 	}
 
 	public void EndTurn(){
-		PeoplePoints = 0;
-		EntertainmentPoints = 0;
+		People = 0;
+		Entertainment = 0;
 		foreach(Card card in Field.Self){
 			Person tempPerson = card.CardObj.GetComponent<Person>();
-			PeoplePoints += tempPerson.PersonCount;
-			EntertainmentPoints + tempPerson.Entertainment;
+			People += tempPerson.PersonCount;
+			Entertainment += tempPerson.Entertainment;
 		}
 		photonView.RPC("PassTurn",PhotonTargets.Others);
 		YourTurn = false;
 	}
 
 	//Draw a card
-	public void DrawCard(){
-		Hand.Add(Deck.Shuffled[0]);
+	public void DrawCard(int num){
+		if(num == 0){
+			Hand.Add(Deck.Shuffled[0]);
+		}
+		else{
+			OtherHand.Add(Deck.Shuffled[0]);
+		}
 		Deck.Shuffled.RemoveAt(0);
 		//TODO: Animation and visual of card being drawn into hand
 	}
@@ -305,10 +311,15 @@ public class GameManager : Photon.MonoBehaviour {
 	
 	[RPC]
 	void SendInitialDraw(){
-		if(PhotonNetwork.isMasterClient)
+		for(int i = 0; i < 4; i++){
+			DrawCard(1);
+		}
+		if(PhotonNetwork.isMasterClient){
 			StartCoroutine(StartTurn());
-		else
+		}
+		else{
 			StartCoroutine(InitialDraw());
+		}
 	}
 
 	[RPC]
