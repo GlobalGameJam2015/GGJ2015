@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(Person)]
+[RequireComponent(typeof(Person))]
 public class Jock : MonoBehaviour {
 
 
@@ -10,6 +10,8 @@ public class Jock : MonoBehaviour {
 
 	private Ray ray;
 	private RaycastHit hit;
+
+	private Person person;
 
 	void Start(){
 		Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -21,6 +23,7 @@ public class Jock : MonoBehaviour {
 	}
 
 	void Played () {
+		person = this.GetComponent<Person>();
 		foreach(Card card in Manager.Field.Self){
 			if(card.Title == "Fat Guy"){
 				_modifier = 1;
