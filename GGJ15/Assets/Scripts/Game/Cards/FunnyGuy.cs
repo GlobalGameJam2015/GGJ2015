@@ -13,7 +13,7 @@ public class FunnyGuy : MonoBehaviour {
 	
 	private Person person;
 	private bool isDoneGet = false;
-	private int addedEntertainment = 1;
+	private int addedEntertainment = 0;
 	
 	void Start(){
 		Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -26,9 +26,10 @@ public class FunnyGuy : MonoBehaviour {
 	
 	void Played () {
 		person = this.GetComponent<Person>();
+		addedEntertainment = 1;
 		foreach(Card card in Manager.Field.Self){
 			if(card.Title == "Funny Guy"){
-				addedEntertainment+=2;
+				addedEntertainment+=3;
 				return;
 			}
 			isDoneGet = true;
