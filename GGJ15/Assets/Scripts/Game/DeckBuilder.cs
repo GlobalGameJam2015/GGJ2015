@@ -151,7 +151,7 @@ public class DeckBuilder : Photon.MonoBehaviour {
 
 		//Begin creating deck string to send to second player
 		for(int i = 0; i < Shuffled.Count; i++){
-			DeckString += i.ToString();
+			DeckString += GetCardNumber(Shuffled[i]).ToString();
 			if(i < Shuffled.Count-1)
 				DeckString += ",";
 		}
@@ -181,11 +181,21 @@ public class DeckBuilder : Photon.MonoBehaviour {
 	[RPC]
 	void SendShuffledDeck(string Deck, PhotonMessageInfo info){
 		string[] CutDeck = Deck.Split(new char[] {','});
-		Debug.Log(DeckString);
+		Debug.Log(Deck);
 		foreach(string card in CutDeck){
 			Debug.Log(card);
 			if(card != "")
 				Shuffled.Add(Cards[int.Parse(card)]);
 		}
+	}
+
+	int GetCardNumber(Card card){
+		for(int i = 0; i < Cards.Count; i++){
+			if(card == Cards[i]){
+				return i;
+			}
+		}
+		Debug.Log("COULD NOT FIND CARD");
+		return 0;
 	}
 }
