@@ -20,7 +20,7 @@ public class Playa : MonoBehaviour {
 			if(chickCount <= 0){
 				return;
 			}
-			if(card.Gender = "Chick"){
+			if(card.Gender == "Chick"){
 				card.CardObj.GetComponent<Person>().MoveToOpponent();
 				chickCount--;
 			}
