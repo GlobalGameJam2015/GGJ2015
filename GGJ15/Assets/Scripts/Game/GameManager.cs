@@ -190,7 +190,7 @@ public class GameManager : Photon.MonoBehaviour {
 							Hand[i].CardObj.name = Hand[i].Title;
 							Hand[i].CardObj.transform.parent = transform.GetChild(0);
 							Hand[i].CardObj.AddComponent(Hand[i].Title.Replace(" ",""));
-							Hand[i].CardObj.SendMessage("Played",SendMessageOptions.DontRequireReceiver);
+							Hand[i].CardObj.SendMessage("Played",Hand[i],SendMessageOptions.DontRequireReceiver);
 
 							Field.Self.Add(Hand[i]);
 							PlayedCardsString += i+",";

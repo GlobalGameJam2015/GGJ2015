@@ -55,7 +55,6 @@ public class DeckBuilder : Photon.MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if(PhotonNetwork.isMasterClient){
 		//Set reference for game manager
 		Manager = GetComponent<GameManager>();
 
@@ -131,6 +130,7 @@ public class DeckBuilder : Photon.MonoBehaviour {
 		}
 
 		//Shuffle deck if you are the host
+		if(PhotonNetwork.isMasterClient)
 		ShuffleDeck();
 		}
 	}
@@ -179,8 +179,11 @@ public class DeckBuilder : Photon.MonoBehaviour {
 	//RPC function for recieving shuffled deck string parses and sets the deck for 2nd player
 	[RPC]
 	void SendShuffledDeck(string Deck, PhotonMessageInfo info){
+		Debug.Log(Deck);
 		string[] CutDeck = Deck.Split(new char[] {','});
+
 		foreach(string card in CutDeck){
+			Debug.Log(card);
 			Shuffled.Add(Cards[int.Parse(card)]);
 		}
 	}
