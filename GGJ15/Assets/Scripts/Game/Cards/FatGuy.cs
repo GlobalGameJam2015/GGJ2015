@@ -5,15 +5,13 @@ using System.Collections;
 public class FatGuy : MonoBehaviour {
 	private GameManager Manager;
 	private Person person;
+	private Card selfCard;
 
 	void Played (Card card) {
 		Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		person = this.GetComponent<Person>();
-		//MOVE TO OTHER PLAYER
 
-		//LOSS OF RESOURCES
-
-		//+1 Resource for all womens
+		person.MoveToOpponent();
 	}
 
 	void Moved(){

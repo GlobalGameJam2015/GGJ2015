@@ -19,6 +19,14 @@ public class Person : MonoBehaviour {
 
 	private int _resourceNeed = 1;
 	private int _resourceMod = 0;
+	public int ResourceMod{
+		get{
+			return _resourceMod;
+		}
+		set{
+			_resourceMod = value;
+		}
+	}
 	public int ResourceNeed{
 		get{
 			return _resourceNeed + _resourceMod;
@@ -43,6 +51,13 @@ public class Person : MonoBehaviour {
 	}
 	public void SetEntertainmentMod (int mod){
 		_personMod = mod;
+	}
+
+	private Card selfCard;
+	public void MoveToOpponent(){
+		transform.parent = transform.parent.parent.FindChild("Opponent");
+		Manager.Field.Opponets.Add(selfCard);
+		Manager.Field.Self.Remove(selfCard);
 	}
 
 	public void Played(Card card){

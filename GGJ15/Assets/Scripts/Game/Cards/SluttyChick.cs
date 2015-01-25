@@ -6,6 +6,7 @@ public class SluttyChick : MonoBehaviour {
 	private GameManager Manager;
 	
 	private Person person;
+	private Card selfCard;
 	
 	void Played (Card card) {
 		Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -29,9 +30,7 @@ public class SluttyChick : MonoBehaviour {
 			}
 		}
 		if(playerFatGuys>enemyFatGuys){
-			//SLUT GOES TO ENEMY;
-		}else{
-			//SLUT STAYS HERE;
+			person.MoveToOpponent();
 		}
 	}
 }
