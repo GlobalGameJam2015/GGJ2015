@@ -35,6 +35,7 @@ public class Card{
 	public int Amount;
 	public string ActionTarget;
 	public int Count;
+	public GameObject CardObj;
 }
 
 public class DeckBuilder : Photon.MonoBehaviour {
@@ -150,15 +151,10 @@ public class DeckBuilder : Photon.MonoBehaviour {
 		}
 
 		//Send RPC of shuffled deck string to second player
-		if(Manager.MultiPlayer)
-			//photonView.RPC("SendShuffledDeck",PhotonTargets.Others,DeckString);
+		//photonView.RPC("SendShuffledDeck",PhotonTargets.Others,DeckString);
 
 		//Start Player 1's turn
-		if(Manager.MultiPlayer)
-			StartCoroutine(Manager.InitialDraw());
-			//StartCoroutine(Manager.DrawForMulligan(7,true));
-		//else
-			//StartCoroutine(Manager.BeginSinglePlayer());
+		StartCoroutine(Manager.InitialDraw());
 	}
 
 	//Replace a card back into the deck at a random spot

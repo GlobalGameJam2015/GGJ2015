@@ -67,6 +67,7 @@ public class GameManager : Photon.MonoBehaviour {
 			yield return new WaitForSeconds(1);
 		}
 		//photonView.RPC("SendInitialDraw",PhotonTargets.Others);
+		StartCoroutine(StartTurn());
 	}
 
 	public IEnumerator StartTurn(){
@@ -133,10 +134,28 @@ public class GameManager : Photon.MonoBehaviour {
 				GUI.EndGroup();
 			}
 
+			//Other HUD
+			GUI.BeginGroup(new Rect(0,(Screen.height-225)/2-110,220,105));
+			GUI.Label(new Rect(10,0,100,20),"Resources",Title);
+			GUI.Box(new Rect(20,20,70,85),TotalResources.ToString(),Points);
+			GUI.Label(new Rect(100,0,120,20),"Entertainment",Title);
+			GUI.Box(new Rect(122,20,70,85),Entertainment.ToString(),Points);
+			GUI.EndGroup();
+			
+			if(GUI.Button(new Rect(21,290,179,43),"",EndTurn)){
+				photonView.RPC("PassTurn",PhotonTargets.Others);
+			}
+			
+			GUI.BeginGroup(new Rect(39,343,142,206));
+			GUI.DrawTexture(new Rect(0,0,142,206),PartyCard);
+			GUI.Label(new Rect(5,4,104,20),"Goal Party Level",TitlePlayed);
+			GUI.Label(new Rect(4,179,20,20),PeopleLevel[PartyLevel].ToString(),NumbersPlayed);
+			GUI.Label(new Rect(115,179,20,20),EntertainmentLevel[PartyLevel].ToString(),NumbersPlayed);
+			GUI.Label(new Rect(15,135,110,50),"Reach your Party Level before your Opponent.",DescriptionPlayed);
+			GUI.EndGroup();
+
 			GUI.BeginGroup(new Rect((Screen.width-(Hand.Count*190))/2,Screen.height-135-HandYMovement,Hand.Count*190,275));
 			for(int i = 0; i < Hand.Count; i++){
-				//Debug.Log(Input.mousePosition.y + " || " + (-1*(Input.mousePosition.y - Screen.height)));
-
 				if(Hand[i].Type == CardTypes.People){
 					GUI.BeginGroup(new Rect(i*190,0,190,275));
 					
@@ -149,13 +168,14 @@ public class GameManager : Photon.MonoBehaviour {
 					if(GUI.Button(new Rect(0,0,190,275),"",Invisible)){
 						if(_Resources >= Hand[i].Resource){
 							_Resources -= Hand[i].Resource;
-							Field.Self.Add(Hand[i]);
-							GameObject go = new GameObject();
-							go.name = Hand[i].Title;
-							go.transform.parent = transform.GetChild(0);
-							go.AddComponent(Hand[i].Title.Replace(" ",""));
-							go.SendMessage("Played",SendMessageOptions.DontRequireReceiver);
 
+							Hand[i].CardObj = new GameObject();
+							Hand[i].CardObj.name = Hand[i].Title;
+							Hand[i].CardObj.transform.parent = transform.GetChild(0);
+							Hand[i].CardObj.AddComponent(Hand[i].Title.Replace(" ",""));
+							Hand[i].CardObj.SendMessage("Played",SendMessageOptions.DontRequireReceiver);
+
+							Field.Self.Add(Hand[i]);
 							PlayedCardsString += i+",";
 							Hand.RemoveAt(i);
 							Debug.Log("SELECT CARD");
@@ -202,6 +222,7 @@ public class GameManager : Photon.MonoBehaviour {
 					
 					GUI.DrawTexture(new Rect(0,0,190,275),Hand[i].Image);
 					GUI.Label(new Rect(5,8,185,20),Hand[i].Title,Title);
+					GUI.Label(new Rect(30,190,130,50),Hand[i].Effect,Description);
 					
 					GUI.Box(new Rect(30,40,130,130),Hand[i].Resource.ToString(),ResourceText);
 
@@ -214,25 +235,6 @@ public class GameManager : Photon.MonoBehaviour {
 					GUI.EndGroup();
 				}				
 			}
-			GUI.EndGroup();
-			
-			GUI.BeginGroup(new Rect(0,(Screen.height-225)/2-110,220,105));
-			GUI.Label(new Rect(10,0,100,20),"Resources",Title);
-			GUI.Box(new Rect(20,20,70,85),TotalResources.ToString(),Points);
-			GUI.Label(new Rect(100,0,120,20),"Entertainment",Title);
-			GUI.Box(new Rect(122,20,70,85),Entertainment.ToString(),Points);
-			GUI.EndGroup();
-
-			if(GUI.Button(new Rect(21,290,179,43),"",EndTurn)){
-				photonView.RPC("PassTurn",PhotonTargets.Others);
-			}
-
-			GUI.BeginGroup(new Rect(39,343,142,206));
-			GUI.DrawTexture(new Rect(0,0,142,206),PartyCard);
-			GUI.Label(new Rect(5,4,104,20),"Goal Party Level",TitlePlayed);
-			GUI.Label(new Rect(4,179,20,20),PeopleLevel[PartyLevel].ToString(),NumbersPlayed);
-			GUI.Label(new Rect(115,179,20,20),EntertainmentLevel[PartyLevel].ToString(),NumbersPlayed);
-			GUI.Label(new Rect(15,135,110,50),"Reach your Party Level before your Opponent.",DescriptionPlayed);
 			GUI.EndGroup();
 		}
 	}

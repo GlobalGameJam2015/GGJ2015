@@ -24,10 +24,10 @@
 	  <title>Fat Guy</title>
 	  <Gender>Guy</Gender>
 	  <img>Card_P_FatGuy</img>
-	  <resource>-3</resource>
+	  <resource>-5</resource>
 	  <value>1</value>
 	  <entertainment>0</entertainment>
-	  <effect>Give to your opponent. All opponent chicks require +1 resource (stacks).</effect>
+	  <effect>Give to your opponent.</effect>
 	  <player>Opponent</player>
 	  <targettype>Opponet</targettype>
 	  <target>Chicks</target>
@@ -315,7 +315,7 @@
 	  		<targettype>Opponet</targettype>
 			<target></target>
 			<action>Subtract</action>
-			<amount>4</amount>
+			<amount>-4</amount>
 			<actiontarget>Resources</actiontarget>
 	  		<number>3</number>
 		</card>
@@ -332,7 +332,7 @@
 	  		<targettype>Opponet</targettype>
 			<target>Couple</target>
 			<action>Set#Negate</action>
-			<amount>1</amount>
+			<amount>0</amount>
 			<actiontarget>People#Effect</actiontarget>
 	  		<number>2</number>
 		</card>
@@ -349,7 +349,7 @@
 	  		<targettype>Any</targettype>
 			<target>Playa</target>
 			<action>Remove</action>
-			<amount>1</amount>
+			<amount>0</amount>
 			<actiontarget>Chick</actiontarget>
 	  		<number>2</number>
 		</card>
@@ -366,7 +366,7 @@
 	  		<targettype>Opponent</targettype>
 			<target></target>
 			<action>Subtract</action>
-			<amount>3</amount>
+			<amount>-3</amount>
 			<actiontarget>Entertainment</actiontarget>
 	  		<number>3</number>
 		</card>
@@ -380,7 +380,7 @@
 	  		<resource>1</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
-	  		<effect></effect>
+	  		<effect>+1 Resources</effect>
 	  		<player>Self</player>
 	  		<targettype>Self</targettype>
 			<target></target>
@@ -397,7 +397,7 @@
 	  		<resource>2</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
-	  		<effect></effect>
+	  		<effect>+2 Resources</effect>
 	  		<player>Self</player>
 	  		<targettype>Self</targettype>
 			<target></target>
@@ -414,7 +414,7 @@
 	  		<resource>3</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
-	  		<effect></effect>
+	  		<effect>+3 Resources</effect>
 	  		<player>Self</player>
 	  		<targettype>Self</targettype>
 			<target></target>
@@ -431,7 +431,7 @@
 	  		<resource>4</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
-	  		<effect></effect>
+	  		<effect>+4 Resources</effect>
 	  		<player>Self</player>
 	  		<targettype>Self</targettype>
 			<target></target>
