@@ -146,13 +146,13 @@ public class GameManager : Photon.MonoBehaviour {
 				GUI.Box(new Rect(0,0,142,206),"");
 				GUI.BeginGroup(new Rect(opponent*142,0,142,206));
 				
-				GUI.DrawTexture(new Rect(0,0,142,206),Field.Self[opponent].Image);
-				GUI.Label(new Rect(5,3,104,20),Field.Self[opponent].Title,TitlePlayed);
-				GUI.Label(new Rect(6,178,20,20),Field.Self[opponent].Resource.ToString(),NumbersPlayed);
+				GUI.DrawTexture(new Rect(0,0,142,206),Field.Opponets[opponent].Image);
+				GUI.Label(new Rect(5,3,104,20),Field.Opponets[opponent].Title,TitlePlayed);
+				GUI.Label(new Rect(6,178,20,20),Field.Opponets[opponent].Resource.ToString(),NumbersPlayed);
 				NumbersPlayed.normal.textColor = Color.white;
-				GUI.Label(new Rect(117,178,20,20),Field.Self[opponent].Value.ToString(),NumbersPlayed);
+				GUI.Label(new Rect(117,178,20,20),Field.Opponets[opponent].Value.ToString(),NumbersPlayed);
 				NumbersPlayed.normal.textColor = Color.black;
-				GUI.Label(new Rect(10,140,125,50),Field.Self[opponent].Effect,DescriptionPlayed);
+				GUI.Label(new Rect(10,140,125,50),Field.Opponets[opponent].Effect,DescriptionPlayed);
 				
 				GUI.EndGroup();
 				GUI.EndGroup();
