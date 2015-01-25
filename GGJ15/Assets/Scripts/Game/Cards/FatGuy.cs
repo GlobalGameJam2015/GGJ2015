@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(Person))]
-public class Jock : MonoBehaviour {
+public class FatGuy : MonoBehaviour {
 	private GameManager Manager;
 	private Person person;
 
