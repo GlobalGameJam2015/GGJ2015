@@ -32,14 +32,14 @@ public class GameManager : Photon.MonoBehaviour {
 	public int Entertainment;
 	public FieldCards Field;
 	public int CardMax = 5;
-	public bool YourTurn;
+	public bool YourTurn = false;
 	public int SmartChickEff = 1;
 
 	//GUISTYLES
 	public Texture2D BG;
 	public Texture2D CardBack;
 	public Texture2D PartyCard;
-	public GUIStyle EndTurn;
+	public GUIStyle EndTurnBtn;
 	public GUIStyle Title;
 	public GUIStyle ResourceText;
 	public GUIStyle Numbers;
@@ -69,7 +69,6 @@ public class GameManager : Photon.MonoBehaviour {
 			yield return new WaitForSeconds(1);
 		}
 		photonView.RPC("SendInitialDraw",PhotonTargets.Others);
-		StartCoroutine(StartTurn());
 	}
 
 	public IEnumerator StartTurn(){
@@ -79,6 +78,11 @@ public class GameManager : Photon.MonoBehaviour {
 		}
 		PlayedCardsString = "";
 		YourTurn = true;
+	}
+
+	public void EndTurn(){
+		photonView.RPC("PassTurn",PhotonTargets.Others);
+		YourTurn = false;
 	}
 
 	//Draw a card
@@ -154,8 +158,8 @@ public class GameManager : Photon.MonoBehaviour {
 			GUI.EndGroup();
 
 			if(YourTurn){
-				if(GUI.Button(new Rect(21,230,179,43),"",EndTurn)){
-					photonView.RPC("PassTurn",PhotonTargets.Others);
+				if(GUI.Button(new Rect(21,230,179,43),"",EndTurnBtn)){
+					EndTurn();
 				}
 			}
 			

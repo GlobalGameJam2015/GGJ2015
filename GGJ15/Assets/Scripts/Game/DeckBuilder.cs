@@ -142,16 +142,18 @@ public class DeckBuilder : Photon.MonoBehaviour {
 			RandomCard = GetRandomCard();
 			Shuffled.Add(Cards[RandomCard]);
 			CardCounts[RandomCard]--;
-		
-			//Begin creating deck string to send to second player
-			DeckString += RandomCard.ToString();
-			if(i < TotalCards-1)
-				DeckString += ",";
 		}
 
 		for(int i = 0; i < Cards[Cards.Count-1].Count; i++){
 			int num = Random.Range(9,Shuffled.Count);
 			Shuffled.Insert(num,Cards[Cards.Count-1]);
+		}
+
+		//Begin creating deck string to send to second player
+		for(int i = 0; i < Shuffled.Count; i++){
+			DeckString += i.ToString();
+			if(i < Shuffled.Count-1)
+				DeckString += ",";
 		}
 
 		//Send RPC of shuffled deck string to second player
@@ -178,11 +180,9 @@ public class DeckBuilder : Photon.MonoBehaviour {
 	//RPC function for recieving shuffled deck string parses and sets the deck for 2nd player
 	[RPC]
 	void SendShuffledDeck(string Deck, PhotonMessageInfo info){
-		Debug.Log(Deck);
 		string[] CutDeck = Deck.Split(new char[] {','});
 
 		foreach(string card in CutDeck){
-			Debug.Log(card);
 			Shuffled.Add(Cards[int.Parse(card)]);
 		}
 	}
