@@ -152,9 +152,11 @@ public class GameManager : Photon.MonoBehaviour {
 			GUI.Label(new Rect(100,0,120,20),"Entertainment",Title);
 			GUI.Box(new Rect(122,20,70,85),Entertainment.ToString(),EntertainmentPoints);
 			GUI.EndGroup();
-			
-			if(GUI.Button(new Rect(21,230,179,43),"",EndTurn)){
-				photonView.RPC("PassTurn",PhotonTargets.Others);
+
+			if(YourTurn){
+				if(GUI.Button(new Rect(21,230,179,43),"",EndTurn)){
+					photonView.RPC("PassTurn",PhotonTargets.Others);
+				}
 			}
 			
 			GUI.BeginGroup(new Rect(39,278,142,206));
@@ -284,6 +286,7 @@ public class GameManager : Photon.MonoBehaviour {
 
 	[RPC]
 	void PassTurn(){
+		Debug.Log("RECIEVED END TURN FROM OPPONENT");
 		StartCoroutine(StartTurn());
 	}
 
