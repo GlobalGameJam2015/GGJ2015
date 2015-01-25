@@ -102,6 +102,7 @@ public class GameManager : Photon.MonoBehaviour {
 			OtherHand.Add(Deck.Shuffled[0]);
 		}
 		Deck.Shuffled.RemoveAt(0);
+		photonView.RPC("PlayerDrew",PhotonTargets.Others);
 		//TODO: Animation and visual of card being drawn into hand
 	}
 
@@ -220,6 +221,7 @@ public class GameManager : Photon.MonoBehaviour {
 
 								Field.Self.Add(Hand[i]);
 								PlayedCardsString += i+",";
+								photonView.RPC("PlayerPlayedACard",PhotonTargets.Others,0,i);
 								Hand.RemoveAt(i);
 								Debug.Log("SELECT CARD");
 								
@@ -326,6 +328,27 @@ public class GameManager : Photon.MonoBehaviour {
 		}
 		else{
 			StartCoroutine(InitialDraw());
+		}
+	}
+
+	[RPC]
+	void PlayerDrew(){
+		Debug.Log("Player Drew a Card");
+		DrawCard(1);
+	}
+
+	[RPC]
+	void PlayerPlayedACard(int type, int card){
+		Debug.Log("Player Played A Card");
+		if(type == 0){
+			OtherHand[card].CardObj = new GameObject();
+			OtherHand[card].CardObj.name = OtherHand[card].Title;
+			OtherHand[card].CardObj.transform.parent = transform.GetChild(1);
+			OtherHand[card].CardObj.AddComponent(OtherHand[card].Title.Replace(" ",""));
+			OtherHand[card].CardObj.SendMessage("Played",OtherHand[card],SendMessageOptions.DontRequireReceiver);
+			
+			Field.Opponets.Add(OtherHand[card]);
+			OtherHand.RemoveAt(card);
 		}
 	}
 

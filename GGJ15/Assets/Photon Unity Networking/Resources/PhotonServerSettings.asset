@@ -41,4 +41,6 @@ MonoBehaviour:
   - PassEffect
   - PassTurn
   - SendInitialDraw
+  - PlayerDrew
+  - PlayerPlayedACard
   DisableAutoOpenWizard: 0
