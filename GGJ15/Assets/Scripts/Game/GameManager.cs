@@ -187,24 +187,29 @@ public class GameManager : Photon.MonoBehaviour {
 					GUI.Label(new Rect(30,190,130,50),Hand[i].Effect,Description);
 
 					if(GUI.Button(new Rect(0,0,190,275),"",Invisible)){
-						if(_Resources >= Hand[i].Resource){
+						if(YourTurn){
+							if(_Resources >= Hand[i].Resource){
 
-							_Resources -= Hand[i].Resource;
+								_Resources -= Hand[i].Resource;
 
-							Hand[i].CardObj = new GameObject();
-							Hand[i].CardObj.name = Hand[i].Title;
-							Hand[i].CardObj.transform.parent = transform.GetChild(0);
-							Hand[i].CardObj.AddComponent(Hand[i].Title.Replace(" ",""));
-							Hand[i].CardObj.SendMessage("Played",Hand[i],SendMessageOptions.DontRequireReceiver);
+								Hand[i].CardObj = new GameObject();
+								Hand[i].CardObj.name = Hand[i].Title;
+								Hand[i].CardObj.transform.parent = transform.GetChild(0);
+								Hand[i].CardObj.AddComponent(Hand[i].Title.Replace(" ",""));
+								Hand[i].CardObj.SendMessage("Played",Hand[i],SendMessageOptions.DontRequireReceiver);
 
-							Field.Self.Add(Hand[i]);
-							PlayedCardsString += i+",";
-							Hand.RemoveAt(i);
-							Debug.Log("SELECT CARD");
-							
+								Field.Self.Add(Hand[i]);
+								PlayedCardsString += i+",";
+								Hand.RemoveAt(i);
+								Debug.Log("SELECT CARD");
+								
+							}
+							else{
+								Debug.Log("Not enough Resources");
+							}
 						}
 						else{
-							Debug.Log("Not enough Resources");
+							Debug.Log("Don't Cheat It's Not Your Turn");
 						}
 					}
 
@@ -222,20 +227,25 @@ public class GameManager : Photon.MonoBehaviour {
 					GUI.Label(new Rect(30,190,130,50),Hand[i].Effect,Description);
 
 					if(GUI.Button(new Rect(0,0,190,275),"",Invisible)){
-						if(TotalResources >= Hand[i].Resource){
-							TotalResources -= Hand[i].Resource/SmartChickEff;
-							_Resources = TotalResources;
-							if(Hand[i].Type == CardTypes.Entertainment){
-								Entertainment += Hand[i].Amount;
+						if(YourTurn){
+							if(TotalResources >= Hand[i].Resource){
+								TotalResources -= Hand[i].Resource/SmartChickEff;
+								_Resources = TotalResources;
+								if(Hand[i].Type == CardTypes.Entertainment){
+									Entertainment += Hand[i].Amount;
+								}
+								else{
+									//DO NEGATIVE EVENTS EFFECT
+								}
+								
+								Hand.RemoveAt(i);
 							}
 							else{
-								//DO NEGATIVE EVENTS EFFECT
+								Debug.Log("Not enough Resources");
 							}
-							
-							Hand.RemoveAt(i);
 						}
 						else{
-							Debug.Log("Not enough Resources");
+							Debug.Log("Don't Cheat It's Not Your Turn");
 						}
 					}
 					
@@ -251,9 +261,14 @@ public class GameManager : Photon.MonoBehaviour {
 					GUI.Box(new Rect(30,70,130,130),Hand[i].Resource.ToString(),ResourceText);
 
 					if(GUI.Button(new Rect(0,0,190,275),"",Invisible)){
-						TotalResources += Hand[i].Resource;
-						_Resources = TotalResources;
-						Hand.RemoveAt(i);
+						if(YourTurn){
+							TotalResources += Hand[i].Resource;
+							_Resources = TotalResources;
+							Hand.RemoveAt(i);
+						}
+						else{
+							Debug.Log("Don't Cheat It's Not Your Turn");
+						}
 					}
 					
 					GUI.EndGroup();

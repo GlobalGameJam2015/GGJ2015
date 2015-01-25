@@ -473,8 +473,8 @@ MonoBehaviour:
   Deck: {fileID: 0}
   Hand: []
   People: 0
-  TotalResources: 0
-  _Resources: 0
+  TotalResources: 2
+  _Resources: 2
   Entertainment: 0
   Field:
     Opponets: []
