@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Jock : MonoBehaviour {
 
+
 	private GameObject Target;
 	private GameManager Manager;
 
@@ -19,8 +20,11 @@ public class Jock : MonoBehaviour {
 	}
 
 	void Played () {
-		if(!Target){
-
+		foreach(Card card in Manager.Field.Self){
+			if(card.Title == "Fat Guy"){
+				Manager.Field.Self.Remove(card);
+				break;
+			}
 		}
 	}
 }
