@@ -178,7 +178,7 @@ public class DeckBuilder : Photon.MonoBehaviour {
 
 	//RPC function for recieving shuffled deck string parses and sets the deck for 2nd player
 	[RPC]
-	void SendShuffledDeck(PhotonMessageInfo info, string Deck){
+	void SendShuffledDeck(string Deck, PhotonMessageInfo info){
 		string[] CutDeck = Deck.Split(new char[] {','});
 		foreach(string card in CutDeck){
 			Shuffled.Add(Cards[int.Parse(card)]);
