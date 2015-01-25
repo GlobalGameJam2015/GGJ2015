@@ -3,6 +3,8 @@ using System.Collections;
 
 public class FindOpponent : Photon.MonoBehaviour {
 
+	public Texture2D BG;
+
 	// Use this for initialization
 	void Start () {
 		Debug.Log("FIND OPPONENT");
@@ -16,6 +18,10 @@ public class FindOpponent : Photon.MonoBehaviour {
 			PhotonNetwork.JoinOrCreateRoom(PhotonNetwork.playerName,new RoomOptions(){maxPlayers = 2},null);
 			Debug.Log("No other players");
 		}
+	}
+
+	void OnGUI(){
+		GUI.DrawTexture(new Rect(0,0,Screen.width,Screen.height),BG);
 	}
 
 	// We have two options here: we either joined(by title, list or random) or created a room.
