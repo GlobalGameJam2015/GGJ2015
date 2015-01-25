@@ -168,7 +168,7 @@ public class DeckBuilder : Photon.MonoBehaviour {
 
 	//Selects a random card (keeps looking if a card is out)
 	int GetRandomCard(){
-		int num = Random.Range(0,Cards.Count);
+		int num = Random.Range(0,Cards.Count-1);
 		if(CardCounts[num] < 1){
 			num = GetRandomCard();
 		}

@@ -11,6 +11,10 @@ public class StartScreen : MonoBehaviour {
 	private bool connectFailed = false;
 	
 	public static readonly string SceneNameGame = "FindOpponent";
+
+	public Texture2D BG;
+	public GUIStyle FindOpponent;
+	public GUIStyle Text;
 	
 	public void Awake()
 	{
@@ -67,8 +71,19 @@ public class StartScreen : MonoBehaviour {
 			
 			return;
 		}
+
+		GUI.DrawTexture(new Rect(0,0,Screen.width,Screen.height),BG);
+
+		GUI.Label(new Rect((Screen.width-200)/2-140,(Screen.height-30)/2+90,100,30),"Player Name: ",Text); 
+		PhotonNetwork.playerName = GUI.TextField(new Rect((Screen.width-200)/2-30,(Screen.height-30)/2+90,200,30),PhotonNetwork.playerName,Text);
+
+		if(GUI.Button(new Rect((Screen.width-267)/2-30,(Screen.height-64)/2+155,267,64),"",FindOpponent)){
+			PhotonNetwork.JoinLobby();
+			GetComponent<FindOpponent>().enabled = true;
+			enabled = false;
+		}
 		
-		Rect content = new Rect((Screen.width - WidthAndHeight.x)/2, (Screen.height - WidthAndHeight.y)/2, WidthAndHeight.x, WidthAndHeight.y);
+		/*Rect content = new Rect((Screen.width - WidthAndHeight.x)/2, (Screen.height - WidthAndHeight.y)/2, WidthAndHeight.x, WidthAndHeight.y);
 		GUI.Box(content,"Party Foul");
 		GUILayout.BeginArea(content);
 		
@@ -100,7 +115,7 @@ public class StartScreen : MonoBehaviour {
 		
 		GUILayout.EndHorizontal();
 		
-		GUILayout.EndArea();
+		GUILayout.EndArea();*/
 	}
 	
 	public void OnDisconnectedFromPhoton()

@@ -41,7 +41,7 @@
 	  <type>0</type>
 	  <title>Slutty Chick</title>
 	  <Gender>Chick</Gender>
-	  <img>/fileext</img>
+	  <img>Card_P_SluttyChick</img>
 	  <resource>0</resource>
 	  <value>1</value>
 	  <entertainment>0</entertainment>
@@ -77,7 +77,7 @@
 	  <type>0</type>
 	  <title>Funny Guy</title>
 	  <Gender>Guy</Gender>
-	  <img>Card_P_FunnyGuyt</img>
+	  <img>Card_P_FunnyGuy</img>
 	  <resource>1</resource>
 	  <value>1</value>
 	  <entertainment>0</entertainment>
@@ -441,4 +441,23 @@
 			<number>5</number>
 		</card>
 	</resourceCards>
+	<partylevelCards>
+		<card>
+			<type>4</type>
+			<title>Party Level</title>
+			<Gender></Gender>
+	  		<img>Card_Resources</img>
+	  		<resource>0</resource>
+	  		<value>0</value>
+	  		<entertainment>0</entertainment>
+	  		<effect></effect>
+	  		<player></player>
+	  		<targettype></targettype>
+			<target></target>
+			<action></action>
+			<amount>0</amount>
+			<actiontarget></actiontarget>
+			<number>5</number>
+		</card>
+	</partylevelCards>
 </populate>

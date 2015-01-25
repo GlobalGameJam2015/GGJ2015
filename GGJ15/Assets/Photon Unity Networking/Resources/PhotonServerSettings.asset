@@ -40,4 +40,5 @@ MonoBehaviour:
   - StartTurn
   - PassEffect
   - PassTurn
+  - SendInitialDraw
   DisableAutoOpenWizard: 0
