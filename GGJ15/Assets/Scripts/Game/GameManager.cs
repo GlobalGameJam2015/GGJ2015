@@ -160,8 +160,8 @@ public class GameManager : Photon.MonoBehaviour {
 			GUI.BeginGroup(new Rect(39,278,142,206));
 			GUI.DrawTexture(new Rect(0,0,142,206),PartyCard);
 			GUI.Label(new Rect(5,4,104,20),"Goal Party Level",TitlePlayed);
-			GUI.Label(new Rect(4,179,20,20),PeopleLevel[PartyLevel].ToString(),NumbersPlayed);
 			NumbersPlayed.normal.textColor = Color.white;
+			GUI.Label(new Rect(4,179,20,20),PeopleLevel[PartyLevel].ToString(),NumbersPlayed);
 			GUI.Label(new Rect(115,179,20,20),EntertainmentLevel[PartyLevel].ToString(),NumbersPlayed);
 			NumbersPlayed.normal.textColor = Color.black;
 			GUI.Label(new Rect(15,135,110,50),"Reach your Party Level before your Opponent.",DescriptionPlayed);
@@ -249,6 +249,24 @@ public class GameManager : Photon.MonoBehaviour {
 						Hand.RemoveAt(i);
 					}
 					
+					GUI.EndGroup();
+				}	
+				else if(Hand[i].Type == CardTypes.Party){
+					GUI.BeginGroup(new Rect(i*190,0,190,275));
+					
+					GUI.DrawTexture(new Rect(0,0,190,275),Hand[i].Image);
+					GUI.Label(new Rect(5,8,185,20),Hand[i].Title,Title);
+					Numbers.normal.textColor = Color.white;
+					GUI.Label(new Rect(10,243,20,20),Hand[i].Resource.ToString(),Numbers);
+					GUI.Label(new Rect(160,243,20,20),Hand[i].Value.ToString(),Numbers);
+					Numbers.normal.textColor = Color.black;
+					GUI.Label(new Rect(30,190,130,50),Hand[i].Effect,Description);
+
+					if(GUI.Button(new Rect(0,0,190,275),"",Invisible)){
+						PartyLevel++;
+						Hand.RemoveAt(i);
+					}
+
 					GUI.EndGroup();
 				}				
 			}

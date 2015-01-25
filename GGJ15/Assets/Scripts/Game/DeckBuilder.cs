@@ -130,14 +130,12 @@ public class DeckBuilder : Photon.MonoBehaviour {
 		}
 
 		//Shuffle deck if you are the host
-		//if(PhotonNetwork.isMasterClient)
-			ShuffleDeck();
+		ShuffleDeck();
 	}
 
 	//Handles deck shuffling
 	void ShuffleDeck(){
 		int RandomCard;
-
 		//Places a random card from total count into shuffled deck list
 		for(int i = 0; i < TotalCards; i++){
 			RandomCard = GetRandomCard();
@@ -148,6 +146,11 @@ public class DeckBuilder : Photon.MonoBehaviour {
 			DeckString += RandomCard.ToString();
 			if(i < TotalCards-1)
 				DeckString += ",";
+		}
+
+		for(int i = 0; i < Cards[Cards.Count-1].Count; i++){
+			int num = Random.Range(9,Shuffled.Count);
+			Shuffled.Insert(num,Cards[Cards.Count-1]);
 		}
 
 		//Send RPC of shuffled deck string to second player
