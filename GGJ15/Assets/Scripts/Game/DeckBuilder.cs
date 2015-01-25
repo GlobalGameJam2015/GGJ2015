@@ -131,8 +131,7 @@ public class DeckBuilder : Photon.MonoBehaviour {
 
 		//Shuffle deck if you are the host
 		if(PhotonNetwork.isMasterClient)
-		ShuffleDeck();
-		}
+			ShuffleDeck();
 	}
 
 	//Handles deck shuffling
