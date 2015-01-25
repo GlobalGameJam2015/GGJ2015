@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(Person)]
 public class Jock : MonoBehaviour {
 
 
@@ -22,6 +23,7 @@ public class Jock : MonoBehaviour {
 	void Played () {
 		foreach(Card card in Manager.Field.Self){
 			if(card.Title == "Fat Guy"){
+				_modifier = 1;
 				Manager.Field.Self.Remove(card);
 				break;
 			}
