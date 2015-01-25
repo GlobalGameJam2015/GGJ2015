@@ -26,9 +26,8 @@ public class Jock : MonoBehaviour {
 		person = this.GetComponent<Person>();
 		foreach(Card card in Manager.Field.Self){
 			if(card.Title == "Fat Guy"){
-				_modifier = 1;
 				Manager.Field.Self.Remove(card);
-				break;
+				return;
 			}
 		}
 	}

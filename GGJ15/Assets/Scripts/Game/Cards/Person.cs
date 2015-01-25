@@ -35,7 +35,7 @@ public class Person : MonoBehaviour {
 	private int _entertainmentMod = 0;
 	public int Entertainment{
 		get{
-			return _entertainment + entertainmentMod;
+			return _entertainment + _entertainmentMod;
 		}
 	}
 	public void SetEntertainment(int count){
