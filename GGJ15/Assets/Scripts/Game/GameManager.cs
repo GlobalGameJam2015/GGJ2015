@@ -47,7 +47,9 @@ public class GameManager : Photon.MonoBehaviour {
 	public GUIStyle TitlePlayed;
 	public GUIStyle NumbersPlayed;
 	public GUIStyle DescriptionPlayed;
-	public GUIStyle Points;
+	public GUIStyle ResourcePoints;
+	public GUIStyle EntertainmentPoints;
+	public GUIStyle PeoplePoints;
 	public GUIStyle Invisible = new GUIStyle();
 
 	//Party Level Hash
@@ -113,7 +115,9 @@ public class GameManager : Photon.MonoBehaviour {
 				GUI.DrawTexture(new Rect(0,0,142,206),Field.Self[self].Image);
 				GUI.Label(new Rect(5,3,104,20),Field.Self[self].Title,TitlePlayed);
 				GUI.Label(new Rect(6,178,20,20),Field.Self[self].Resource.ToString(),NumbersPlayed);
+				NumbersPlayed.normal.textColor = Color.white;
 				GUI.Label(new Rect(117,178,20,20),Field.Self[self].Value.ToString(),NumbersPlayed);
+				NumbersPlayed.normal.textColor = Color.black;
 				GUI.Label(new Rect(10,140,125,50),Field.Self[self].Effect,DescriptionPlayed);
 				
 				GUI.EndGroup();
@@ -127,7 +131,9 @@ public class GameManager : Photon.MonoBehaviour {
 				GUI.DrawTexture(new Rect(0,0,142,206),Field.Self[opponent].Image);
 				GUI.Label(new Rect(5,3,104,20),Field.Self[opponent].Title,TitlePlayed);
 				GUI.Label(new Rect(6,178,20,20),Field.Self[opponent].Resource.ToString(),NumbersPlayed);
+				NumbersPlayed.normal.textColor = Color.white;
 				GUI.Label(new Rect(117,178,20,20),Field.Self[opponent].Value.ToString(),NumbersPlayed);
+				NumbersPlayed.normal.textColor = Color.black;
 				GUI.Label(new Rect(10,140,125,50),Field.Self[opponent].Effect,DescriptionPlayed);
 				
 				GUI.EndGroup();
@@ -135,22 +141,29 @@ public class GameManager : Photon.MonoBehaviour {
 			}
 
 			//Other HUD
-			GUI.BeginGroup(new Rect(0,(Screen.height-225)/2-110,220,105));
-			GUI.Label(new Rect(10,0,100,20),"Resources",Title);
-			GUI.Box(new Rect(20,20,70,85),TotalResources.ToString(),Points);
+			GUI.BeginGroup(new Rect(880,490,100,105));
+			GUI.Label(new Rect(0,0,100,20),"Resources",Title);
+			GUI.Box(new Rect(14,20,70,85),TotalResources.ToString(),ResourcePoints);
+			GUI.EndGroup();
+
+			GUI.BeginGroup(new Rect(0,490,220,105));
+			GUI.Label(new Rect(20,0,60,20),"People",Title);
+			GUI.Box(new Rect(20,20,70,85),People.ToString(),PeoplePoints);
 			GUI.Label(new Rect(100,0,120,20),"Entertainment",Title);
-			GUI.Box(new Rect(122,20,70,85),Entertainment.ToString(),Points);
+			GUI.Box(new Rect(122,20,70,85),Entertainment.ToString(),EntertainmentPoints);
 			GUI.EndGroup();
 			
-			if(GUI.Button(new Rect(21,290,179,43),"",EndTurn)){
+			if(GUI.Button(new Rect(21,230,179,43),"",EndTurn)){
 				photonView.RPC("PassTurn",PhotonTargets.Others);
 			}
 			
-			GUI.BeginGroup(new Rect(39,343,142,206));
+			GUI.BeginGroup(new Rect(39,278,142,206));
 			GUI.DrawTexture(new Rect(0,0,142,206),PartyCard);
 			GUI.Label(new Rect(5,4,104,20),"Goal Party Level",TitlePlayed);
+			NumbersPlayed.normal.textColor = Color.white;
 			GUI.Label(new Rect(4,179,20,20),PeopleLevel[PartyLevel].ToString(),NumbersPlayed);
 			GUI.Label(new Rect(115,179,20,20),EntertainmentLevel[PartyLevel].ToString(),NumbersPlayed);
+			NumbersPlayed.normal.textColor = Color.black;
 			GUI.Label(new Rect(15,135,110,50),"Reach your Party Level before your Opponent.",DescriptionPlayed);
 			GUI.EndGroup();
 
@@ -162,7 +175,9 @@ public class GameManager : Photon.MonoBehaviour {
 					GUI.DrawTexture(new Rect(0,0,190,275),Hand[i].Image);
 					GUI.Label(new Rect(5,8,185,20),Hand[i].Title,Title);
 					GUI.Label(new Rect(10,243,20,20),Hand[i].Resource.ToString(),Numbers);
+					Numbers.normal.textColor = Color.white;
 					GUI.Label(new Rect(160,243,20,20),Hand[i].Value.ToString(),Numbers);
+					Numbers.normal.textColor = Color.black;
 					GUI.Label(new Rect(30,190,130,50),Hand[i].Effect,Description);
 
 					if(GUI.Button(new Rect(0,0,190,275),"",Invisible)){
@@ -194,7 +209,9 @@ public class GameManager : Photon.MonoBehaviour {
 					GUI.DrawTexture(new Rect(0,0,190,275),Hand[i].Image);
 					GUI.Label(new Rect(5,8,185,20),Hand[i].Title,Title);
 					GUI.Label(new Rect(10,243,20,20),(Hand[i].Resource/SmartChickEff).ToString(),Numbers);
-					//GUI.Label(new Rect(160,243,20,20),Hand[i].Value.ToString(),Numbers);
+					Numbers.normal.textColor = Color.white;
+					GUI.Label(new Rect(160,243,20,20),Hand[i].Amount.ToString(),Numbers);
+					Numbers.normal.textColor = Color.black;
 					GUI.Label(new Rect(30,190,130,50),Hand[i].Effect,Description);
 
 					if(GUI.Button(new Rect(0,0,190,275),"",Invisible)){
@@ -222,9 +239,9 @@ public class GameManager : Photon.MonoBehaviour {
 					
 					GUI.DrawTexture(new Rect(0,0,190,275),Hand[i].Image);
 					GUI.Label(new Rect(5,8,185,20),Hand[i].Title,Title);
-					GUI.Label(new Rect(30,190,130,50),Hand[i].Effect,Description);
+					GUI.Label(new Rect(30,230,130,50),Hand[i].Effect,Description);
 					
-					GUI.Box(new Rect(30,40,130,130),Hand[i].Resource.ToString(),ResourceText);
+					GUI.Box(new Rect(30,70,130,130),Hand[i].Resource.ToString(),ResourceText);
 
 					if(GUI.Button(new Rect(0,0,190,275),"",Invisible)){
 						TotalResources += Hand[i].Resource;
@@ -232,6 +249,24 @@ public class GameManager : Photon.MonoBehaviour {
 						Hand.RemoveAt(i);
 					}
 					
+					GUI.EndGroup();
+				}	
+				else if(Hand[i].Type == CardTypes.Party){
+					GUI.BeginGroup(new Rect(i*190,0,190,275));
+					
+					GUI.DrawTexture(new Rect(0,0,190,275),Hand[i].Image);
+					GUI.Label(new Rect(5,8,185,20),Hand[i].Title,Title);
+					Numbers.normal.textColor = Color.white;
+					GUI.Label(new Rect(10,243,20,20),Hand[i].Resource.ToString(),Numbers);
+					GUI.Label(new Rect(160,243,20,20),Hand[i].Value.ToString(),Numbers);
+					Numbers.normal.textColor = Color.black;
+					GUI.Label(new Rect(30,190,130,50),Hand[i].Effect,Description);
+
+					if(GUI.Button(new Rect(0,0,190,275),"",Invisible)){
+						PartyLevel++;
+						Hand.RemoveAt(i);
+					}
+
 					GUI.EndGroup();
 				}				
 			}

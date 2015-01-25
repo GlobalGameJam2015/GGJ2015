@@ -446,11 +446,11 @@
 			<type>4</type>
 			<title>Party Level</title>
 			<Gender></Gender>
-	  		<img>Card_Resources</img>
+	  		<img>Card_PartyLevel</img>
 	  		<resource>0</resource>
 	  		<value>0</value>
 	  		<entertainment>0</entertainment>
-	  		<effect></effect>
+	  		<effect>Increase the Party Goal Level.</effect>
 	  		<player></player>
 	  		<targettype></targettype>
 			<target></target>
