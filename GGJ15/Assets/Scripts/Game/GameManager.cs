@@ -97,12 +97,12 @@ public class GameManager : Photon.MonoBehaviour {
 	public void DrawCard(int num){
 		if(num == 0){
 			Hand.Add(Deck.Shuffled[0]);
+			photonView.RPC("PlayerDrew",PhotonTargets.Others);
 		}
 		else{
 			OtherHand.Add(Deck.Shuffled[0]);
 		}
 		Deck.Shuffled.RemoveAt(0);
-		photonView.RPC("PlayerDrew",PhotonTargets.Others);
 		//TODO: Animation and visual of card being drawn into hand
 	}
 
