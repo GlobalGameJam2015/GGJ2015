@@ -2,32 +2,25 @@
 using System.Collections;
 
 [RequireComponent(typeof(Person))]
-public class Jock : MonoBehaviour {
-
-
-	private GameObject Target;
+public class PopularChick : MonoBehaviour {
 	private GameManager Manager;
-
-	private Ray ray;
-	private RaycastHit hit;
-
+	
 	private Person person;
-
+	
 	void Start(){
 		Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
+		person = this.GetComponent<Person>();
 	}
-
+	
 	void Update(){
 		Ray ray;
-
+		
 	}
-
+	
 	void Played () {
-		person = this.GetComponent<Person>();
-		person.SetResourceNeed(2);
 		foreach(Card card in Manager.Field.Self){
-			if(card.Title == "Fat Guy"){
-				Manager.Field.Self.Remove(card);
+			if(card.Title == "Jock"){
+				person.SetPersonCount(2);
 				return;
 			}
 		}

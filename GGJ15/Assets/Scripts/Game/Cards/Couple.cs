@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(Person))]
-public class Jock : MonoBehaviour {
+public class Couple : MonoBehaviour {
 
 
 	private GameObject Target;
@@ -15,6 +15,15 @@ public class Jock : MonoBehaviour {
 
 	void Start(){
 		Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
+		person = this.GetComponent<Person>();
+	}
+
+	private int turnCount = 2;
+	void OnTurn(){
+		turnCount--;
+		if(turn==0){
+			SetPersonCount(4);
+		}
 	}
 
 	void Update(){
@@ -23,13 +32,7 @@ public class Jock : MonoBehaviour {
 	}
 
 	void Played () {
-		person = this.GetComponent<Person>();
-		person.SetResourceNeed(2);
-		foreach(Card card in Manager.Field.Self){
-			if(card.Title == "Fat Guy"){
-				Manager.Field.Self.Remove(card);
-				return;
-			}
-		}
+		person.SetPersonCount(2);
+		person.SetResourceNeed(3);
 	}
 }
