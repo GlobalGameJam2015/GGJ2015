@@ -186,6 +186,13 @@ public class GameManager : Photon.MonoBehaviour {
 			GUI.Label(new Rect(15,135,110,50),"Reach your Party Level before your Opponent.",DescriptionPlayed);
 			GUI.EndGroup();
 
+			GUI.BeginGroup(new Rect((Screen.width-(OtherHand.Count*190))/2,-135,OtherHand.Count*190,275));
+				for(int i = 0; i < OtherHand.Count; i++){
+				GUI.DrawTexture(new Rect(i*190,0,190,275),CardBack);
+				}
+			GUI.EndGroup();
+
+			//HAND
 			GUI.BeginGroup(new Rect((Screen.width-(Hand.Count*190))/2,Screen.height-135-HandYMovement,Hand.Count*190,275));
 			for(int i = 0; i < Hand.Count; i++){
 				if(Hand[i].Type == CardTypes.People){
