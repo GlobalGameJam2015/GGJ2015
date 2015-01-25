@@ -49,6 +49,7 @@ public class GameManager : Photon.MonoBehaviour {
 	public GUIStyle DescriptionPlayed;
 	public GUIStyle ResourcePoints;
 	public GUIStyle EntertainmentPoints;
+	public GUIStyle PeoplePoints;
 	public GUIStyle Invisible = new GUIStyle();
 
 	//Party Level Hash
@@ -140,18 +141,23 @@ public class GameManager : Photon.MonoBehaviour {
 			}
 
 			//Other HUD
-			GUI.BeginGroup(new Rect(0,378,220,105));
-			GUI.Label(new Rect(10,0,100,20),"Resources",Title);
-			GUI.Box(new Rect(20,20,70,85),TotalResources.ToString(),ResourcePoints);
+			GUI.BeginGroup(new Rect(880,490,100,105));
+			GUI.Label(new Rect(0,0,100,20),"Resources",Title);
+			GUI.Box(new Rect(14,20,70,85),TotalResources.ToString(),ResourcePoints);
+			GUI.EndGroup();
+
+			GUI.BeginGroup(new Rect(0,490,220,105));
+			GUI.Label(new Rect(20,0,60,20),"People",Title);
+			GUI.Box(new Rect(20,20,70,85),People.ToString(),PeoplePoints);
 			GUI.Label(new Rect(100,0,120,20),"Entertainment",Title);
 			GUI.Box(new Rect(122,20,70,85),Entertainment.ToString(),EntertainmentPoints);
 			GUI.EndGroup();
 			
-			if(GUI.Button(new Rect(21,488,179,43),"",EndTurn)){
+			if(GUI.Button(new Rect(21,230,179,43),"",EndTurn)){
 				photonView.RPC("PassTurn",PhotonTargets.Others);
 			}
 			
-			GUI.BeginGroup(new Rect(39,162,142,206));
+			GUI.BeginGroup(new Rect(39,278,142,206));
 			GUI.DrawTexture(new Rect(0,0,142,206),PartyCard);
 			GUI.Label(new Rect(5,4,104,20),"Goal Party Level",TitlePlayed);
 			GUI.Label(new Rect(4,179,20,20),PeopleLevel[PartyLevel].ToString(),NumbersPlayed);
