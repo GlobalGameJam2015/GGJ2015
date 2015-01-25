@@ -40,47 +40,44 @@ public class StartScreen : MonoBehaviour {
 	
 	public void OnGUI()
 	{
+
 		if (this.Skin != null)
 		{
 			GUI.skin = this.Skin;
 		}
-		
-		if (!PhotonNetwork.connected)
-		{
-			if (PhotonNetwork.connecting)
-			{
-				GUILayout.Label("Connecting to: " + PhotonNetwork.ServerAddress);
-			}
-			else
-			{
-				GUILayout.Label("Not connected. Check console output. Detailed connection state: " + PhotonNetwork.connectionStateDetailed + " Server: " + PhotonNetwork.ServerAddress);
-			}
-			
-			if (this.connectFailed)
-			{
-				GUILayout.Label("Connection failed. Check setup and use Setup Wizard to fix configuration.");
-				GUILayout.Label(String.Format("Server: {0}", new object[] {PhotonNetwork.ServerAddress}));
-				GUILayout.Label("AppId: " + PhotonNetwork.PhotonServerSettings.AppID);
-				
-				if (GUILayout.Button("Try Again", GUILayout.Width(100)))
+			if (!PhotonNetwork.connected){
+				if (PhotonNetwork.connecting)
 				{
-					this.connectFailed = false;
-					PhotonNetwork.ConnectUsingSettings("0.9");
+					GUILayout.Label("Connecting to: " + PhotonNetwork.ServerAddress);
 				}
-			}
-			
-			return;
+				else
+				{
+					GUILayout.Label("Not connected. Check console output. Detailed connection state: " + PhotonNetwork.connectionStateDetailed + " Server: " + PhotonNetwork.ServerAddress);
+				}
+				
+				if (this.connectFailed)
+				{
+					GUILayout.Label("Connection failed. Check setup and use Setup Wizard to fix configuration.");
+					GUILayout.Label(String.Format("Server: {0}", new object[] {PhotonNetwork.ServerAddress}));
+					GUILayout.Label("AppId: " + PhotonNetwork.PhotonServerSettings.AppID);
+					
+					if (GUILayout.Button("Try Again", GUILayout.Width(100)))
+					{
+						this.connectFailed = false;
+						PhotonNetwork.ConnectUsingSettings("0.9");
+					}
+				}
+				
+				return;
 		}
 
 		GUI.DrawTexture(new Rect(0,0,Screen.width,Screen.height),BG);
-
 		GUI.Label(new Rect((Screen.width-200)/2-140,(Screen.height-30)/2+90,100,30),"Player Name: ",Text); 
-		PhotonNetwork.playerName = GUI.TextField(new Rect((Screen.width-200)/2-30,(Screen.height-30)/2+90,200,30),PhotonNetwork.playerName,Text);
-
-		if(GUI.Button(new Rect((Screen.width-267)/2-30,(Screen.height-64)/2+155,267,64),"",FindOpponent)){
+		PhotonNetwork.playerName = GUI.TextField(new Rect((Screen.width-200)/2,(Screen.height-30)/2+90,200,30),PhotonNetwork.playerName,Text);
+		if(GUI.Button(new Rect((Screen.width-267)/2,(Screen.height-64)/2+155,267,64),"",FindOpponent)){
 			PhotonNetwork.JoinLobby();
 			GetComponent<FindOpponent>().enabled = true;
-			enabled = false;
+			Disabled = false;
 		}
 		
 		/*Rect content = new Rect((Screen.width - WidthAndHeight.x)/2, (Screen.height - WidthAndHeight.y)/2, WidthAndHeight.x, WidthAndHeight.y);
