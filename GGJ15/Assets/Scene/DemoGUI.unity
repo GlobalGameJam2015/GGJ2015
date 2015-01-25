@@ -988,7 +988,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 10230980, guid: 6064a6773221ab34983e7ee73bb06f1f, type: 2}
       propertyPath: m_Text
-      value: Long placeholder
+      value: Long placeholder!
       objectReference: {fileID: 0}
     - target: {fileID: 130980, guid: 6064a6773221ab34983e7ee73bb06f1f, type: 2}
       propertyPath: m_TagString
@@ -3120,7 +3120,7 @@ TextMesh:
     type: 2}
   m_PrefabInternal: {fileID: 647917757}
   m_GameObject: {fileID: 1696534127}
-  m_Text: Long placeholder
+  m_Text: Long placeholder!
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
