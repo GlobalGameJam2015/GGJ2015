@@ -77,7 +77,7 @@ public class StartScreen : MonoBehaviour {
 		if(GUI.Button(new Rect((Screen.width-267)/2,(Screen.height-64)/2+155,267,64),"",FindOpponent)){
 			PhotonNetwork.JoinLobby();
 			GetComponent<FindOpponent>().enabled = true;
-			Disabled = false;
+			enabled = false;
 		}
 		
 		/*Rect content = new Rect((Screen.width - WidthAndHeight.x)/2, (Screen.height - WidthAndHeight.y)/2, WidthAndHeight.x, WidthAndHeight.y);

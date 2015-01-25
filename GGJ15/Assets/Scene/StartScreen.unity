@@ -283,7 +283,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 5488b05ec1607744e9458da1894a229a, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
-    m_Alignment: 0
+    m_Alignment: 3
     m_WordWrap: 0
     m_RichText: 1
     m_TextClipping: 0
@@ -293,6 +293,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
+  Disabled: 0
 --- !u!114 &500849742
 MonoBehaviour:
   m_ObjectHideFlags: 0
