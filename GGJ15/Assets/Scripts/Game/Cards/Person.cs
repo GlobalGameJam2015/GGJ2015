@@ -56,8 +56,8 @@ public class Person : MonoBehaviour {
 	private Card selfCard;
 	public void MoveToOpponent(){
 		transform.parent = transform.parent.parent.FindChild("Opponent");
-		Manager.Field.Opponets.Add(selfCard);
-		Manager.Field.Self.Remove(selfCard);
+		//Manager.Field.Opponets.Add(selfCard);
+		//Manager.Field.Self.Remove(selfCard);
 	}
 
 	public void Played(Card card){
