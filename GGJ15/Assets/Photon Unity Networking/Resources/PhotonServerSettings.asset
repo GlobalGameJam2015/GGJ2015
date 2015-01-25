@@ -39,4 +39,5 @@ MonoBehaviour:
   - PassMulligan
   - StartTurn
   - PassEffect
+  - PassTurn
   DisableAutoOpenWizard: 0

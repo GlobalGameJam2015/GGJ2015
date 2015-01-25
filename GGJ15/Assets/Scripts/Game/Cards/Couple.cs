@@ -18,13 +18,13 @@ public class Couple : MonoBehaviour {
 		person = this.GetComponent<Person>();
 	}
 
-	private int turnCount = 2;
+	/*private int turnCount = 2;
 	void OnTurn(){
 		turnCount--;
 		if(turn==0){
 			SetPersonCount(4);
 		}
-	}
+	}*/
 
 	void Update(){
 		Ray ray;
