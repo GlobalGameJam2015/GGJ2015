@@ -7,12 +7,13 @@ public class FindOpponent : Photon.MonoBehaviour {
 	void Start () {
 		Debug.Log("FIND OPPONENT");
 		Debug.Log(PhotonNetwork.connected);
-		if(PhotonNetwork.countOfPlayers > 1){
+		Debug.Log(PhotonNetwork.countOfRooms);
+		if(PhotonNetwork.countOfRooms > 1){
 			PhotonNetwork.JoinRandomRoom();
-			//photonView.RPC("FoundOpponent",PhotonNetwork.otherPlayers[0]);
+			photonView.RPC("FoundOpponent",PhotonNetwork.otherPlayers[0]);
 		}
 		else{
-			PhotonNetwork.JoinOrCreateRoom("Test",new RoomOptions(){maxPlayers = 2},null);
+			PhotonNetwork.JoinOrCreateRoom(PhotonNetwork.playerName,new RoomOptions(){maxPlayers = 2},null);
 			Debug.Log("No other players");
 		}
 	}
