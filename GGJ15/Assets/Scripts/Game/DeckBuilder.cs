@@ -183,7 +183,8 @@ public class DeckBuilder : Photon.MonoBehaviour {
 		string[] CutDeck = Deck.Split(new char[] {','});
 
 		foreach(string card in CutDeck){
-			Shuffled.Add(Cards[int.Parse(card)]);
+			if(card != "")
+				Shuffled.Add(Cards[int.Parse(card)]);
 		}
 	}
 }
