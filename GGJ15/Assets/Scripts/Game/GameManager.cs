@@ -143,7 +143,6 @@ public class GameManager : Photon.MonoBehaviour {
 			}
 			for(int opponent = 0; opponent < Field.Opponets.Count; opponent++){
 				GUI.BeginGroup(new Rect((Screen.width-(Field.Opponets.Count*142))/2,144,Field.Opponets.Count*142,206));
-				GUI.Box(new Rect(0,0,142,206),"");
 				GUI.BeginGroup(new Rect(opponent*142,0,142,206));
 				
 				GUI.DrawTexture(new Rect(0,0,142,206),Field.Opponets[opponent].Image);
