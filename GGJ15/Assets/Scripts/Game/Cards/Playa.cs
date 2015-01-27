@@ -16,7 +16,7 @@ public class Playa : MonoBehaviour {
 		Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		person = this.GetComponent<Person>();
 		int chickCount = 2;
-		foreach(Card card in Manager.Field.Self){
+		foreach(Card card in Manager.Field.Opponets){
 			if(chickCount <= 0){
 				return;
 			}

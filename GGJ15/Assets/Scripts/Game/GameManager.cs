@@ -350,6 +350,18 @@ public class GameManager : Photon.MonoBehaviour {
 			Field.Opponets.Add(OtherHand[card]);
 			OtherHand.RemoveAt(card);
 		}
+		if(type == 1){
+			OtherHand.RemoveAt(card);
+		}
+		if(type == 2){
+			OtherHand.RemoveAt(card);
+		}
+		if(type == 3){
+			//TotalResources += Hand[i].Resource;
+			//_Resources = TotalResources;
+
+			OtherHand.RemoveAt(card);
+		}
 	}
 
 	[RPC]
