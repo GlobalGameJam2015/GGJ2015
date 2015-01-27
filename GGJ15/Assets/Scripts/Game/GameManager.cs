@@ -255,9 +255,11 @@ public class GameManager : Photon.MonoBehaviour {
 								_Resources = TotalResources;
 								if(Hand[i].Type == CardTypes.Entertainment){
 									Entertainment += Hand[i].Amount;
+									photonView.RPC("PlayerPlayedACard",PhotonTargets.Others,1,i);
 								}
 								else{
 									//DO NEGATIVE EVENTS EFFECT
+									photonView.RPC("PlayerPlayedACard",PhotonTargets.Others,2,i);
 								}
 								
 								Hand.RemoveAt(i);
@@ -286,6 +288,7 @@ public class GameManager : Photon.MonoBehaviour {
 						if(YourTurn){
 							TotalResources += Hand[i].Resource;
 							_Resources = TotalResources;
+							photonView.RPC("PlayerPlayedACard",PhotonTargets.Others,3,i);
 							Hand.RemoveAt(i);
 						}
 						else{
