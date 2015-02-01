@@ -4,7 +4,7 @@ using Parse;
 using System.Text.RegularExpressions;
 using UnityEngine.UI;
 
-public class Parse_Init : MonoBehaviour {
+public class Parse_Register : MonoBehaviour {
 	private string username;
 	private string password;
 	private string confirm_pass;
