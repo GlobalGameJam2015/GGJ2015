@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2fb51deed279547ae525694ea07ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectNames: []
   audioFilterData: []
 --- !u!82 &228260942
 AudioSource:
@@ -353,7 +354,7 @@ AudioSource:
   m_GameObject: {fileID: 2061086989}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 7958abcba38ce8f44a5d71b8bf969033, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

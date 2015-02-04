@@ -31,16 +31,12 @@ public class AudioManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.Space)){
-			sfxManager.audio.Play();
-		}
 		if(sfxManager.audio.isPlaying){
 			isDucking = true;
 		}else{
 			isDucking = false;
 		}
 		signalMod = Mathf.Lerp(1,Duck,duckLerp);
-		Debug.Log(signalMod);
 	}
 
 	float signalMod = 1;

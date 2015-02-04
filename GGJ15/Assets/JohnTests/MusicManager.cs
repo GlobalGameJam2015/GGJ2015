@@ -36,8 +36,9 @@ public class MusicManager : MonoBehaviour {
 			controller = this;
 			Application.runInBackground = true;
 			AudioSettings.outputSampleRate = 44100;
-			//LoadAudioFromResources();
-			//sampleLength = sampleData[currentAudioClip].Length;
+			LoadAudioFromResources();
+			Debug.Log(currentAudioClip);
+			sampleLength = sampleData[currentAudioClip].Length;
 			DontDestroyOnLoad(gameObject);
 		}else if (controller != this){
 			Destroy(gameObject);
@@ -45,11 +46,12 @@ public class MusicManager : MonoBehaviour {
 	}
 	
 	void LoadAudioFromResources(){
-		AudioClip[] samples = Resources.LoadAll<AudioClip>("Music/TitleScreen");
+		AudioClip[] samples = Resources.LoadAll<AudioClip>("Audio/Music");
 		if(samples==null||samples.Length==0)return;
 		for(var i = 0; i < samples.Length; i++){
 			sampleLength = samples[i].samples*2;
 			sampleData.Add(new float[sampleLength]);
+
 			samples[i].GetData (sampleData[i], 0);
 		}
 		audioReady = true;
@@ -78,31 +80,30 @@ public class MusicManager : MonoBehaviour {
 	[HideInInspector]
 	public float[] audioFilterData;
 	void OnAudioFilterRead (float[] data, int channels){
-		if(audioFilterData.Length == null){
-			audioFilterData = new float[data.Length];
-		}
-		audioFilterData = (float[])data.Clone();
-		Array.Clear(data,0,data.Length);
-		return;
-		//if(!audioReady)return;
+
+
+		if(!audioReady)return;
+
 		for (var i = 0; i < data.Length; i+=channels) {
 			float[] audioFloat = PlayFromFloat (channels, currentAudioClip);
 			for (var c = 0; c<channels; c++) {
 				data [i + c] += audioFloat [c] * volume;
 			}
-			//currentSample = (currentSample + 1) % sampleLength;
+			currentSample = (currentSample + 1) % sampleLength;
 		}
+
+		if(audioFilterData.Length == null){
+			audioFilterData = new float[data.Length];
+		}
+		audioFilterData = (float[])data.Clone();
+		Array.Clear(data,0,data.Length);
 
 	}
 
-	int[] mainArray = {1};
+	int[] mainArray = {0,1};
 	int[] tempArray;
-	void Update(){
-		if(currentAudioClip == 0 && sampleIndex < sampleLength*0.8f){
-			return;
-		}
-		
-		if(sampleIndex > sampleLength*0.4f && nextAudioClip == -1){
+	void Update(){		
+		if(sampleIndex > sampleLength*0.8f && nextAudioClip == -1){
 			Debug.Log ("New Sound");
 			tempArray = mainArray;
 			
