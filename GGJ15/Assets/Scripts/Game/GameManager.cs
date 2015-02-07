@@ -33,7 +33,7 @@ public class GameManager : Photon.MonoBehaviour {
 	public int Entertainment;
 	public FieldCards Field;
 	public int CardMax = 5;
-	public bool YourTurn = false;
+	public static bool YourTurn = false;
 	public int SmartChickEff = 1;
 
 	//GUISTYLES
@@ -89,8 +89,56 @@ public class GameManager : Photon.MonoBehaviour {
 			People += tempPerson.PersonCount;
 			Entertainment += tempPerson.Entertainment;
 		}
+		doubleCheckField ();
 		photonView.RPC("PassTurn",PhotonTargets.Others);
 		YourTurn = false;
+	}
+
+	//currently broken. will be used to handle slutty chicks after every turn.
+	public void doubleCheckField() {
+		/*int totalFatsos = 0;
+		Card[] totalSluts = new Card[6];
+		int myFatsos = 0;
+		int mySluts = 0;
+		int yourFatsos = 0;
+		int yourSluts = 0;
+		int z = 0;
+		foreach(Card card in Field.Self){
+			if (card.Title == "Fat Guy"){
+				totalFatsos++;
+				myFatsos++;
+			} else if (card.Title == "Slutty Chick") {
+				totalSluts[z] = card;
+				z++;
+			}
+		}
+		foreach(Card card2 in Field.Opponets){
+			if (card2.Title == "Fat Guy"){
+				totalFatsos++;
+				yourFatsos++;
+			} else if (card2.Title == "Slutty Chick") {
+				totalSluts[z] = card2;
+				z++;
+			}
+		}
+		if (totalFatsos != 0) {
+			if (myFatsos > yourFatsos) {
+				Debug.Log("you get all sluts");
+				for (int i = 0; i < totalSluts.Length; i++)
+				{
+					Field.Self.Remove(totalSluts[i]);
+					Field.Opponets.Add(totalSluts[i]);
+				}
+			} else {
+				Debug.Log ("I Keep all dem sluts");
+				for (int i = 0; i < totalSluts.Length; i++)
+				{
+					Field.Opponets.Remove(totalSluts[i]);
+					Field.Self.Add(totalSluts[i]);
+				}
+			}
+		}
+		*/
 	}
 
 	//Draw a card
@@ -218,7 +266,10 @@ public class GameManager : Photon.MonoBehaviour {
 								Hand[i].CardObj.AddComponent(Hand[i].Title.Replace(" ",""));
 								Hand[i].CardObj.SendMessage("Played",Hand[i],SendMessageOptions.DontRequireReceiver);
 
-								Field.Self.Add(Hand[i]);
+								if (Hand[i].Title != "Fat Guy")
+									Field.Self.Add(Hand[i]);
+								else
+									Field.Opponets.Add(Hand[i]);
 								PlayedCardsString += i+",";
 								photonView.RPC("PlayerPlayedACard",PhotonTargets.Others,0,i);
 								Hand.RemoveAt(i);
@@ -339,14 +390,21 @@ public class GameManager : Photon.MonoBehaviour {
 	[RPC]
 	void PlayerPlayedACard(int type, int card){
 		Debug.Log("Player Played A Card");
+		if (YourTurn) {
+			Debug.Log("is your turn");
+		} else {
+			Debug.Log ("is thier turn");
+		}
 		if(type == 0){
 			OtherHand[card].CardObj = new GameObject();
 			OtherHand[card].CardObj.name = OtherHand[card].Title;
 			OtherHand[card].CardObj.transform.parent = transform.GetChild(1);
 			OtherHand[card].CardObj.AddComponent(OtherHand[card].Title.Replace(" ",""));
 			OtherHand[card].CardObj.SendMessage("Played",OtherHand[card],SendMessageOptions.DontRequireReceiver);
-			
-			Field.Opponets.Add(OtherHand[card]);
+			if (OtherHand[card].Title != "Fat Guy")
+				Field.Opponets.Add(OtherHand[card]);
+			else
+				Field.Self.Add(OtherHand[card]);
 			OtherHand.RemoveAt(card);
 		}
 		if(type == 1){

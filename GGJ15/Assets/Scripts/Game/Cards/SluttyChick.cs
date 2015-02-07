@@ -12,25 +12,32 @@ public class SluttyChick : MonoBehaviour {
 		Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		person = this.GetComponent<Person>();
 		person.SetResourceNeed(0);
-		CheckSluttiness();
+		//CheckSluttiness();
+		if (GameManager.YourTurn) {
+			Debug.Log("Slutty Chick on your tur");
+		} else {
+			Debug.Log ("Slutty Chick on their turn");
+		}
 
 	}
 
 	void CheckSluttiness(){
 		int playerFatGuys = 0;
 		int enemyFatGuys = 0;
-		foreach(Card card in Manager.Field.Self){
-			if(card.Title == "Fat Guy"){
-				playerFatGuys++;
+		if (GameManager.YourTurn) {
+			foreach(Card card in Manager.Field.Self){
+				if(card.Title == "Fat Guy"){
+					playerFatGuys++;
+				}
 			}
-		}
-		foreach(Card card in Manager.Field.Opponets){
-			if(card.Title == "Fat Guy"){
-				enemyFatGuys++;
+			foreach(Card card in Manager.Field.Opponets){
+				if(card.Title == "Fat Guy"){
+					enemyFatGuys++;
+				}
 			}
-		}
-		if(playerFatGuys>enemyFatGuys){
-			person.MoveToOpponent();
+			if(playerFatGuys>enemyFatGuys){
+				person.MoveToOpponent();
+			}
 		}
 	}
 }

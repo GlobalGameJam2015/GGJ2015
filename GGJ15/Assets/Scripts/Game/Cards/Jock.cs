@@ -16,10 +16,21 @@ public class Jock : MonoBehaviour {
 	void Played () {
 		Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		person = this.GetComponent<Person>();
-		foreach(Card card in Manager.Field.Self){
-			if(card.Title == "Fat Guy"){
-				Manager.Field.Self.Remove(card);
-				return;
+		if (GameManager.YourTurn) {
+			Debug.Log("jock on your tur");
+			foreach(Card card in Manager.Field.Self){
+				if(card.Title == "Fat Guy"){
+					Manager.Field.Self.Remove(card);
+					return;
+				}
+			}
+		} else {
+			Debug.Log ("Jock on their turn");
+			foreach(Card card in Manager.Field.Opponets){
+				if(card.Title == "Fat Guy"){
+					Manager.Field.Opponets.Remove(card);
+					return;
+				}
 			}
 		}
 	}

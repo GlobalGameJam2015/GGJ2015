@@ -36,7 +36,19 @@ public class Parse_login : MonoBehaviour {
 			{
 				// Login was successful.
 				Debug.Log ("you have successfully logged in.");
+				has_Logged_In();
 			}
 		});
+	}
+
+	public void has_Logged_In() {
+		if (ParseUser.CurrentUser != null)
+		{
+			// do stuff with the user
+		}
+		else
+		{
+			// show the signup or login screen
+		}
 	}
 }

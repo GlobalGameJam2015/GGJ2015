@@ -11,7 +11,7 @@ public class FatGuy : MonoBehaviour {
 		Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		person = this.GetComponent<Person>();
 
-		person.MoveToOpponent();
+		//person.MoveToOpponent();
 	}
 
 	void Moved(){

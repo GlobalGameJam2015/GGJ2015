@@ -10,11 +10,18 @@ public class PopularChick : MonoBehaviour {
 	void Played () {
 		Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		person = this.GetComponent<Person>();
-		foreach(Card card in Manager.Field.Self){
-			if(card.Title == "Jock"){
-				person.SetPersonCount(2);
-				return;
+
+		if (GameManager.YourTurn) {
+			Debug.Log("popular chick on your tur");
+			foreach(Card card in Manager.Field.Self){
+				if(card.Title == "Jock"){
+					person.SetPersonCount(2);
+					return;
+				}
 			}
+		} else {
+			//currently no effect on opposing side.
+			Debug.Log ("Popular Chick on their turn");
 		}
 	}
 }

@@ -16,6 +16,12 @@ public class SmartChick : MonoBehaviour {
 	void Played () {
 		Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		person = this.GetComponent<Person>();
-		Manager.SmartChickEff = 2;
+		if (GameManager.YourTurn) {
+			Debug.Log("smart chick on your turn");
+			Manager.SmartChickEff = 2;
+		} else {
+			//no effect on opponent side.
+			Debug.Log ("smart chick on their turn");
+		}
 	}
 }

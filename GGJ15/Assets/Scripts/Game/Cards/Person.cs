@@ -59,9 +59,27 @@ public class Person : MonoBehaviour {
 		if(Manager == null){
 			Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		}
-		transform.parent = transform.parent.parent.FindChild("Opponent");
-		Manager.Field.Opponets.Add(selfCard);
-		Manager.Field.Self.Remove(selfCard);
+		if (GameManager.YourTurn) {
+			//is your turn
+			transform.parent = transform.parent.parent.FindChild("Opponent");
+			foreach(Card card in Manager.Field.Self){
+				if(card.Title == selfCard.Title){
+					Manager.Field.Self.Remove(card);
+					Manager.Field.Opponets.Add(card);
+					return;
+				}
+			}
+			//Manager.Field.Self.Remove(selfCard);
+		} else {
+			//is opponents turn
+			foreach(Card card in Manager.Field.Self){
+				if(card.Title == selfCard.Title){
+					Manager.Field.Opponets.Remove(card);
+					Manager.Field.Self.Add(card);
+					return;
+				}
+			}
+		}
 	}
 
 	public void Played(Card card){

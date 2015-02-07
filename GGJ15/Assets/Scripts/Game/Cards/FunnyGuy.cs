@@ -18,15 +18,19 @@ public class FunnyGuy : MonoBehaviour {
 	void Played (Card card) {
 		Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		person = this.GetComponent<Person>();
-		addedEntertainment = 1;
-		foreach(Card selfCard in Manager.Field.Self){
-			if(selfCard.Title == "Funny Guy"){
-				addedEntertainment+=3;
-				return;
+		if (GameManager.YourTurn) {
+			addedEntertainment = 1;
+			foreach(Card selfCard in Manager.Field.Self){
+				if(selfCard.Title == "Funny Guy"){
+					addedEntertainment+=3;
+					return;
+				}
+				isDoneGet = true;
 			}
-			isDoneGet = true;
+			if (isDoneGet)
+				person.SetEntertainment (addedEntertainment);
+		} else {
+			Debug.Log ("Funny guy on their turn.");
 		}
-		if (isDoneGet)
-			person.SetEntertainment (addedEntertainment);
 	}
 }
