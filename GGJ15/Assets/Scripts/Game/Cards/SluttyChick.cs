@@ -12,7 +12,7 @@ public class SluttyChick : MonoBehaviour {
 		Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		person = this.GetComponent<Person>();
 		person.SetResourceNeed(0);
-		//CheckSluttiness();
+		CheckSluttiness();
 		if (GameManager.YourTurn) {
 			Debug.Log("Slutty Chick on your tur");
 		} else {
@@ -21,7 +21,7 @@ public class SluttyChick : MonoBehaviour {
 
 	}
 
-	void CheckSluttiness(){
+	public void CheckSluttiness(){
 		int playerFatGuys = 0;
 		int enemyFatGuys = 0;
 		if (GameManager.YourTurn) {
@@ -36,8 +36,25 @@ public class SluttyChick : MonoBehaviour {
 				}
 			}
 			if(playerFatGuys>enemyFatGuys){
-				person.MoveToOpponent();
+				person.isOnWrongSide = true;
+			} else {
+				person.isOnWrongSide = false;
 			}
 		}
+	}
+
+	public void onEndTurn() {
+		this.CheckSluttiness ();
+		if (person.isOnWrongSide) {
+			if(GameManager.YourTurn){
+				Manager.Field.Self.Remove(person.selfCard);
+				Manager.Field.Opponets.Add(person.selfCard);
+			} else {
+				Manager.Field.Opponets.Remove(person.selfCard);
+				Manager.Field.Self.Add(person.selfCard);
+			}
+		}
+
+
 	}
 }

@@ -88,8 +88,9 @@ public class GameManager : Photon.MonoBehaviour {
 			Person tempPerson = card.CardObj.GetComponent<Person>();
 			People += tempPerson.PersonCount;
 			Entertainment += tempPerson.Entertainment;
+			tempPerson.onEndTurn();
 		}
-		doubleCheckField ();
+		//doubleCheckField ();
 		photonView.RPC("PassTurn",PhotonTargets.Others);
 		YourTurn = false;
 	}
@@ -266,7 +267,7 @@ public class GameManager : Photon.MonoBehaviour {
 								Hand[i].CardObj.AddComponent(Hand[i].Title.Replace(" ",""));
 								Hand[i].CardObj.SendMessage("Played",Hand[i],SendMessageOptions.DontRequireReceiver);
 
-								if (Hand[i].Title != "Fat Guy")
+								if (!Hand[i].CardObj.GetComponent<Person>().isOnWrongSide)
 									Field.Self.Add(Hand[i]);
 								else
 									Field.Opponets.Add(Hand[i]);
@@ -401,7 +402,7 @@ public class GameManager : Photon.MonoBehaviour {
 			OtherHand[card].CardObj.transform.parent = transform.GetChild(1);
 			OtherHand[card].CardObj.AddComponent(OtherHand[card].Title.Replace(" ",""));
 			OtherHand[card].CardObj.SendMessage("Played",OtherHand[card],SendMessageOptions.DontRequireReceiver);
-			if (OtherHand[card].Title != "Fat Guy")
+			if (!OtherHand[card].CardObj.GetComponent<Person>().isOnWrongSide)
 				Field.Opponets.Add(OtherHand[card]);
 			else
 				Field.Self.Add(OtherHand[card]);

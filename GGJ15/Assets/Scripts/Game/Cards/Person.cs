@@ -5,6 +5,8 @@ public class Person : MonoBehaviour {
 
 	private int _personCount = 1;
 	private int _personMod = 0;
+	//isOnWrongSide will only effect the card when it is played.
+	public bool isOnWrongSide = false;
 	public int PersonCount {
 		get{
 			return _personCount + _personMod;
@@ -54,7 +56,7 @@ public class Person : MonoBehaviour {
 	}
 
 	private GameManager Manager;
-	private Card selfCard;
+	public Card selfCard;
 	public void MoveToOpponent(){
 		if(Manager == null){
 			Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -80,6 +82,10 @@ public class Person : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	public void onEndTurn() {
+		Debug.Log("Card : " + selfCard.Title + "end Turn Function.");
 	}
 
 	public void Played(Card card){
