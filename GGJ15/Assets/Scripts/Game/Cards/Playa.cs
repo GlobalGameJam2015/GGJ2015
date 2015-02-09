@@ -15,14 +15,29 @@ public class Playa : MonoBehaviour {
 	void Played () {
 		Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		person = this.GetComponent<Person>();
-		int chickCount = 2;
-		foreach(Card card in Manager.Field.Opponets){
-			if(chickCount <= 0){
-				return;
+		if (GameManager.YourTurn) {
+			int chickCount = 2;
+			foreach(Card card in Manager.Field.Opponets){
+				if(chickCount <= 0){
+					return;
+				}
+				if(card.Gender == "Chick"){
+					Manager.Field.Opponets.Remove(card);
+					Manager.Field.Self.Add(card);
+					chickCount--;
+				}
 			}
-			if(card.Gender == "Chick"){
-				card.CardObj.GetComponent<Person>().MoveToOpponent();
-				chickCount--;
+		} else {
+			int chickCount = 2;
+			foreach(Card card in Manager.Field.Self){
+				if(chickCount <= 0){
+					return;
+				}
+				if(card.Gender == "Chick"){
+					Manager.Field.Self.Remove(card);
+					Manager.Field.Opponets.Add(card);
+					chickCount--;
+				}
 			}
 		}
 	}
