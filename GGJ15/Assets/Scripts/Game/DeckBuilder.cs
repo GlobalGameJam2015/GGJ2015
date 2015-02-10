@@ -157,7 +157,7 @@ public class DeckBuilder : Photon.MonoBehaviour {
 		}
 		Debug.Log(DeckString);
 		//Send RPC of shuffled deck string to second player
-		//photonView.RPC("SendShuffledDeck",PhotonTargets.Others,DeckString);
+		photonView.RPC("SendShuffledDeck",PhotonTargets.Others,DeckString);
 
 		//Start Player 1's turn
 		//StartCoroutine(Manager.InitialDraw());
