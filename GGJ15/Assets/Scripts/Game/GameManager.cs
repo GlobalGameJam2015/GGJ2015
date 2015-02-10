@@ -31,6 +31,7 @@ public class GameManager : Photon.MonoBehaviour {
 	public int TotalResources = 2;
 	public int _Resources = 2;
 	public int Entertainment;
+	private int PeopleEntertainment;
 	public FieldCards Field;
 	public int CardMax = 5;
 	public static bool YourTurn = false;
@@ -83,12 +84,14 @@ public class GameManager : Photon.MonoBehaviour {
 
 	public void EndTurn(){
 		People = 0;
-		Entertainment = 0;
+		Entertainment -= PeopleEntertainment;
+		PeopleEntertainment = 0;
 		foreach(Card card in Field.Self){
 			Person tempPerson = card.CardObj.GetComponent<Person>();
 			People += tempPerson.PersonCount;
-			Entertainment += tempPerson.Entertainment;
+			PeopleEntertainment += tempPerson.Entertainment;
 		}
+		Entertainment += PeopleEntertainment;
 		photonView.RPC("PassTurn",PhotonTargets.Others);
 		YourTurn = false;
 	}

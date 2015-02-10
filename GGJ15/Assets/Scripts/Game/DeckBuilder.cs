@@ -130,7 +130,7 @@ public class DeckBuilder : Photon.MonoBehaviour {
 		}
 
 		//Shuffle deck if you are the host
-		if(PhotonNetwork.isMasterClient)
+		//if(PhotonNetwork.isMasterClient)
 			ShuffleDeck();
 	}
 
@@ -157,10 +157,11 @@ public class DeckBuilder : Photon.MonoBehaviour {
 		}
 		Debug.Log(DeckString);
 		//Send RPC of shuffled deck string to second player
-		photonView.RPC("SendShuffledDeck",PhotonTargets.Others,DeckString);
+		//photonView.RPC("SendShuffledDeck",PhotonTargets.Others,DeckString);
 
 		//Start Player 1's turn
-		StartCoroutine(Manager.InitialDraw());
+		//StartCoroutine(Manager.InitialDraw());
+		StartCoroutine(GetComponent<DebugManager>().InitialDraw());
 	}
 
 	//Replace a card back into the deck at a random spot
