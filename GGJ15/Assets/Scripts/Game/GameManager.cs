@@ -13,7 +13,7 @@ public class FieldCards{
 
 public class GameManager : Photon.MonoBehaviour {
 
-	public bool MultiPlayer = true;
+	public bool isSinglePlayer;
 
 	//Reference to the deck builder
 	public DeckBuilder Deck;
@@ -112,7 +112,7 @@ public class GameManager : Photon.MonoBehaviour {
 	}
 
 	void OnGUI(){
-		if(MultiPlayer){
+		if(!isSinglePlayer){
 			//GUI.DrawTexture(new Rect(0,0,Screen.width,Screen.height),BG);
 		
 			for(int i = 0; i < OpponentHandCount; i++){
@@ -139,7 +139,7 @@ public class GameManager : Photon.MonoBehaviour {
 				GUI.Label(new Rect(5,3,104,20),Field.Self[self].Title,TitlePlayed);
 				GUI.Label(new Rect(6,178,20,20),Field.Self[self].Resource.ToString(),NumbersPlayed);
 				NumbersPlayed.normal.textColor = Color.white;
-				GUI.Label(new Rect(117,178,20,20),Field.Self[self].Value.ToString(),NumbersPlayed);
+				GUI.Label(new Rect(117,178,20,20),Field.Self[self].People.ToString(),NumbersPlayed);
 				NumbersPlayed.normal.textColor = Color.black;
 				GUI.Label(new Rect(10,140,125,50),Field.Self[self].Effect,DescriptionPlayed);
 				
@@ -154,7 +154,7 @@ public class GameManager : Photon.MonoBehaviour {
 				GUI.Label(new Rect(5,3,104,20),Field.Opponets[opponent].Title,TitlePlayed);
 				GUI.Label(new Rect(6,178,20,20),Field.Opponets[opponent].Resource.ToString(),NumbersPlayed);
 				NumbersPlayed.normal.textColor = Color.white;
-				GUI.Label(new Rect(117,178,20,20),Field.Opponets[opponent].Value.ToString(),NumbersPlayed);
+				GUI.Label(new Rect(117,178,20,20),Field.Opponets[opponent].People.ToString(),NumbersPlayed);
 				NumbersPlayed.normal.textColor = Color.black;
 				GUI.Label(new Rect(10,140,125,50),Field.Opponets[opponent].Effect,DescriptionPlayed);
 				
@@ -207,7 +207,7 @@ public class GameManager : Photon.MonoBehaviour {
 					GUI.Label(new Rect(5,8,185,20),Hand[i].Title,Title);
 					GUI.Label(new Rect(10,243,20,20),Hand[i].Resource.ToString(),Numbers);
 					Numbers.normal.textColor = Color.white;
-					GUI.Label(new Rect(160,243,20,20),Hand[i].Value.ToString(),Numbers);
+					GUI.Label(new Rect(160,243,20,20),Hand[i].People.ToString(),Numbers);
 					Numbers.normal.textColor = Color.black;
 					GUI.Label(new Rect(30,190,130,50),Hand[i].Effect,Description);
 
@@ -312,7 +312,7 @@ public class GameManager : Photon.MonoBehaviour {
 					GUI.Label(new Rect(5,8,185,20),Hand[i].Title,Title);
 					Numbers.normal.textColor = Color.white;
 					GUI.Label(new Rect(10,243,20,20),Hand[i].Resource.ToString(),Numbers);
-					GUI.Label(new Rect(160,243,20,20),Hand[i].Value.ToString(),Numbers);
+					GUI.Label(new Rect(160,243,20,20),Hand[i].People.ToString(),Numbers);
 					Numbers.normal.textColor = Color.black;
 					GUI.Label(new Rect(30,190,130,50),Hand[i].Effect,Description);
 
@@ -391,7 +391,7 @@ public class GameManager : Photon.MonoBehaviour {
 		if(name != ""){
 			foreach(Card card in Field.Self){
 				if(card.Title == name){
-					People -= card.Value;
+					People -= card.People;
 					Field.Self.Remove(card);
 				}
 			}

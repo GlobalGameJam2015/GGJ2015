@@ -65,7 +65,7 @@ public class Person : MonoBehaviour {
 	public void Played(Card card){
 		selfCard = card;
 		Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
-		_personCount = card.Value;
+		_personCount = card.People;
 		_resourceNeed = card.Resource;
 		_entertainment = card.Entertainment;		
 	}

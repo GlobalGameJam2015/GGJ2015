@@ -7,17 +7,10 @@
 	  <Gender>Guy</Gender>
 	  <img>Card_P_Jock</img>
 	  <resource>2</resource>
-	  <value>1</value>
+	  <people>1</people>
 	  <entertainment>0</entertainment>
 	  <effect>Remove 1 Fat Guy from your party.</effect>
-	  <player>Self</player>
-	  <targettype>Opponet</targettype>
-	  <target>Fat Guy</target>
-	  <targetcount>1</targetcount>
-	  <action>Remove</action>
-	  <amount>0</amount>
-	  <actiontarget>Card</actiontarget>
-	  <number>8</number>
+	  <amount>8</amount>
 	</card>
 	<card>
 	  <type>0</type>
@@ -25,17 +18,10 @@
 	  <Gender>Guy</Gender>
 	  <img>Card_P_FatGuy</img>
 	  <resource>-5</resource>
-	  <value>1</value>
+	  <people>1</people>
 	  <entertainment>0</entertainment>
 	  <effect>Give to your opponent.</effect>
-	  <player>Opponent</player>
-	  <targettype>Opponet</targettype>
-	  <target>Chicks</target>
-	  <targetcount>-1</targetcount>
-	  <action>Add</action>
-	  <amount>0</amount>
-	  <actiontarget>Resource</actiontarget>
-	  <number>5</number>
+	  <amount>5</amount>
 	</card>
 	<card>
 	  <type>0</type>
@@ -43,17 +29,10 @@
 	  <Gender>Chick</Gender>
 	  <img>Card_P_SluttyChick</img>
 	  <resource>0</resource>
-	  <value>1</value>
+	  <people>1</people>
 	  <entertainment>0</entertainment>
 	  <effect>Goes to whoever's pary has the fewest Fat Guys.</effect>
-	  <player>Any</player>
-	  <targettype>All</targettype>
-	  <target>Fat Guy</target>
-	  <targetcount>-1</targetcount>
-	  <action>Greater</action>
-	  <amount>0</amount>
-	  <actiontarget></actiontarget>
-	  <number>5</number>
+	  <amount>5</amount>
 	</card>
 	<card>
 	  <type>0</type>
@@ -61,17 +40,10 @@
 	  <Gender>Chick</Gender>
 	  <img>Card_P_PopularGirl</img>
 	  <resource>1</resource>
-	  <value>1</value>
+	  <people>1</people>
 	  <entertainment>0</entertainment>
 	  <effect>On play, if a Jock is at the party get a +1 People bonus.</effect>
-	  <player>Self</player>
-	  <targettype>Self</targettype>
-	  <target>Jock</target>
-	  <targetcount>-1</targetcount>
-	  <action>Check#Add</action>
-	  <amount>0</amount>
-	  <actiontarget>Jock#People</actiontarget>
-	  <number>12</number>
+	  <amount>12</amount>
 	</card>
 	<card>
 	  <type>0</type>
@@ -79,17 +51,10 @@
 	  <Gender>Guy</Gender>
 	  <img>Card_P_FunnyGuy</img>
 	  <resource>1</resource>
-	  <value>1</value>
+	  <people>1</people>
 	  <entertainment>0</entertainment>
 	  <effect>+1 Entertainment, +3 for each Funny Guy played after.</effect>
-	  <player>Self</player>
-	  <targettype>Self</targettype>
-	  <target>Funny Guy</target>
-	  <targetcount>-1</targetcount>
-	  <action>Greater</action>
-	  <amount>0</amount>
-	  <actiontarget>Funny Guy</actiontarget>
-	  <number>8</number>
+	  <amount>8</amount>
 	</card>
 	<card>
 	  <type>0</type>
@@ -97,17 +62,10 @@
 	  <Gender>Both</Gender>
 	  <img>Card_P_Couple</img>
 	  <resource>3</resource>
-	  <value>2</value>
+	  <people>2</people>
 	  <entertainment>0</entertainment>
 	  <effect>Once after 2 turns Couple gains +2 People.</effect>
-	  <player>Self</player>
-	  <targettype>Self</targettype>
-	  <target>Card</target>
-	  <targetcount>0</targetcount>
-	  <action>Count</action>
-	  <amount>2</amount>
-	  <actiontarget>People</actiontarget>
-	  <number>5</number>
+	  <amount>5</amount>
 	</card>
 	<card>
 	  <type>0</type>
@@ -115,17 +73,10 @@
 	  <Gender>Guy</Gender>
 	  <img>Card_P_Playa</img>
 	  <resource>5</resource>
-	  <value>3</value>
+	  <people>3</people>
 	  <entertainment>0</entertainment>
 	  <effect>Can take up to 2 chicks from your opponent.</effect>
-	  <player>Self</player>
-	  <targettype>Opponent</targettype>
-	  <target>Chicks</target>
-	  <targetcount>-1</targetcount>
-	  <action>Take</action>
-	  <amount>2</amount>
-	  <actiontarget></actiontarget>
-	  <number>5</number>
+	  <amount>5</amount>
 	</card>
 	<card>
 	  <type>0</type>
@@ -133,17 +84,10 @@
 	  <Gender>Guy</Gender>
 	  <img>Card_P_SmartChick</img>
 	  <resource>1</resource>
-	  <value>1</value>
+	  <people>1</people>
 	  <entertainment>0</entertainment>
 	  <effect>On Play, Event cards cost 1/2 for the remainder of this turn.</effect>
-	  <player>Self</player>
-	  <targettype>Hand</targettype>
-	  <target>Events</target>
-	  <targetcount>0</targetcount>
-	  <action>Divide</action>
-	  <amount>2</amount>
-	  <actiontarget>Event</actiontarget>
-	  <number>5</number>
+	  <amount>5</amount>
 	</card>
 	</peopleCards>
 	<entertainmentCards>
@@ -153,16 +97,10 @@
 	  		<Gender></Gender>
 	  		<img>Card_E_Karaoke</img>
 	  		<resource>2</resource>
-	  		<value>0</value>
+	  		<people>0</people>
 	  		<entertainment>0</entertainment>
 	  		<effect>+2 Entertainment</effect>
-	  		<player>Self</player>
-	  		<targettype>Self</targettype>
-			<target></target>
-			<action>Add</action>
-			<amount>2</amount>
-			<actiontarget>Entertainment</actiontarget>
-	  		<number>2</number>
+	  		<amount>2</amount>
 		</card>
 		<card>
 			<type>1</type>
@@ -170,16 +108,10 @@
 	  		<Gender></Gender>
 	  		<img>Card_E_SlipNSlide</img>
 	  		<resource>3</resource>
-	  		<value>0</value>
+	  		<people>0</people>
 	  		<entertainment>0</entertainment>
 	  		<effect>+3 Entertainment</effect>
-	  		<player>Self</player>
-	  		<targettype>Self</targettype>
-			<target></target>
-			<action>Add</action>
-			<amount>3</amount>
-			<actiontarget>Entertainment</actiontarget>
-	  		<number>2</number>
+	  		<amount>2</amount>
 		</card>
 		<card>
 			<type>1</type>
@@ -187,16 +119,10 @@
 	  		<Gender></Gender>
 	  		<img>Card_E_DJ</img>
 	  		<resource>3</resource>
-	  		<value>0</value>
+	  		<people>0</people>
 	  		<entertainment>0</entertainment>
 	  		<effect>+3 Entertainment</effect>
-	  		<player>Self</player>
-	  		<targettype>Self</targettype>
-			<target></target>
-			<action>Add</action>
-			<amount>3</amount>
-			<actiontarget>Entertainment</actiontarget>
-	  		<number>2</number>
+	  		<amount>2</amount>
 		</card>
 		<card>
 			<type>1</type>
@@ -204,16 +130,10 @@
 	  		<Gender></Gender>
 	  		<img>Card_E_Kegs</img>
 	  		<resource>2</resource>
-	  		<value>0</value>
+	  		<people>0</people>
 	  		<entertainment>0</entertainment>
 	  		<effect>+2 Entertainment</effect>
-	  		<player>Self</player>
-	  		<targettype>Self</targettype>
-			<target></target>
-			<action>Add</action>
-			<amount>2</amount>
-			<actiontarget>Entertainment</actiontarget>
-	  		<number>2</number>
+	  		<amount>2</amount>
 		</card>
 		<card>
 			<type>1</type>
@@ -221,16 +141,10 @@
 	  		<Gender></Gender>
 	  		<img>Card_E_MudWrestling</img>
 	  		<resource>5</resource>
-	  		<value>0</value>
+	  		<people>0</people>
 	  		<entertainment>0</entertainment>
 	  		<effect>+5 Entertainment</effect>
-	  		<player>Self</player>
-	  		<targettype>Self</targettype>
-			<target></target>
-			<action>Add</action>
-			<amount>5</amount>
-			<actiontarget>Entertainment</actiontarget>
-	  		<number>2</number>
+	  		<amount>2</amount>
 		</card>
 		<card>
 			<type>1</type>
@@ -238,16 +152,10 @@
 	  		<Gender></Gender>
 	  		<img>Card_E_Pizza</img>
 	  		<resource>1</resource>
-	  		<value>0</value>
+	  		<people>0</people>
 	  		<entertainment>0</entertainment>
 	  		<effect>+1 Entertainment</effect>
-	  		<player>Self</player>
-	  		<targettype>Self</targettype>
-			<target></target>
-			<action>Add</action>
-			<amount>1</amount>
-			<actiontarget>Entertainment</actiontarget>
-	  		<number>3</number>
+	  		<amount>3</amount>
 		</card>
 		<card>
 			<type>1</type>
@@ -255,16 +163,10 @@
 	  		<Gender></Gender>
 	  		<img>Card_E_BeerPong</img>
 	  		<resource>3</resource>
-	  		<value>0</value>
+	  		<people>0</people>
 	  		<entertainment>0</entertainment>
 	  		<effect>+3 Entertainment</effect>
-	  		<player>Self</player>
-	  		<targettype>Self</targettype>
-			<target></target>
-			<action>Add</action>
-			<amount>3</amount>
-			<actiontarget>Entertainment</actiontarget>
-	  		<number>2</number>
+	  		<amount>2</amount>
 		</card>
 	</entertainmentCards>
 	<partyFouls>
@@ -274,16 +176,10 @@
 	  		<Gender></Gender>
 	  		<img>Card_PF_LosingLunch</img>
 	  		<resource>8</resource>
-	  		<value>0</value>
+	  		<people>0</people>
 	  		<entertainment>0</entertainment>
 	  		<effect>Remove 1 person from a party.</effect>
-	  		<player>Self</player>
-	  		<targettype>Any</targettype>
-			<target>Person</target>
-			<action>Remove</action>
-			<amount>0</amount>
-			<actiontarget></actiontarget>
-	  		<number>1</number>
+	  		<amount>1</amount>
 		</card>
 		<card>
 			<type>2</type>
@@ -291,16 +187,10 @@
 	  		<Gender></Gender>
 	  		<img>Card_PF_ThrowingPunch</img>
 	  		<resource>4</resource>
-	  		<value>0</value>
+	  		<people>0</people>
 	  		<entertainment>0</entertainment>
 	  		<effect>Remove all opponents Jocks and give them, +2 Entertrainment for each.</effect>
-	  		<player>Self</player>
-	  		<targettype>Opponet</targettype>
-			<target>Jocks</target>
-			<action>Remove#Add</action>
-			<amount>2</amount>
-			<actiontarget>Jocks#Entertainment</actiontarget>
-	  		<number>2</number>
+	  		<amount>2</amount>
 		</card>
 		<card>
 			<type>2</type>
@@ -308,16 +198,10 @@
 	  		<Gender></Gender>
 	  		<img>Card_PF_SpillingBeer</img>
 	  		<resource>2</resource>
-	  		<value>0</value>
+	  		<people>0</people>
 	  		<entertainment>0</entertainment>
 	  		<effect>-4 Resources</effect>
-	  		<player>Self</player>
-	  		<targettype>Opponet</targettype>
-			<target></target>
-			<action>Subtract</action>
-			<amount>-4</amount>
-			<actiontarget>Resources</actiontarget>
-	  		<number>3</number>
+	  		<amount>3</amount>
 		</card>
 		<card>
 			<type>2</type>
@@ -325,16 +209,10 @@
 	  		<Gender></Gender>
 	  		<img>Card_PF_KissAndTell</img>
 	  		<resource>4</resource>
-	  		<value>0</value>
+	  		<people>0</people>
 	  		<entertainment>0</entertainment>
 	  		<effect>Set an opponet's Couple to 1 People and negate their effect if not activated.</effect>
-	  		<player>Self</player>
-	  		<targettype>Opponet</targettype>
-			<target>Couple</target>
-			<action>Set#Negate</action>
-			<amount>0</amount>
-			<actiontarget>People#Effect</actiontarget>
-	  		<number>2</number>
+	  		<amount>2</amount>
 		</card>
 		<card>
 			<type>2</type>
@@ -342,16 +220,11 @@
 	  		<Gender></Gender>
 	  		<img>Card_PF_LosingCool</img>
 	  		<resource>4</resource>
-	  		<value>0</value>
+	  		<people>0</people>
 	  		<entertainment>0</entertainment>
 	  		<effect>Playa loses 1 Chick.</effect>
-	  		<player>Self</player>
-	  		<targettype>Any</targettype>
-			<target>Playa</target>
-			<action>Remove</action>
-			<amount>0</amount>
-			<actiontarget>Chick</actiontarget>
-	  		<number>2</number>
+
+	  		<amount>2</amount>
 		</card>
 		<card>
 			<type>2</type>
@@ -359,16 +232,10 @@
 	  		<Gender></Gender>
 	  		<img>Card_PF_TalkAboutWork</img>
 	  		<resource>2</resource>
-	  		<value>0</value>
+	  		<people>0</people>
 	  		<entertainment>0</entertainment>
 	  		<effect>-3 Entertainment</effect>
-	  		<player>Self</player>
-	  		<targettype>Opponent</targettype>
-			<target></target>
-			<action>Subtract</action>
-			<amount>-3</amount>
-			<actiontarget>Entertainment</actiontarget>
-	  		<number>3</number>
+	  		<amount>3</amount>
 		</card>
 	</partyFouls>
 	<resourceCards>
@@ -378,16 +245,10 @@
 			<Gender></Gender>
 	  		<img>Card_Resources</img>
 	  		<resource>1</resource>
-	  		<value>0</value>
+	  		<people>0</people>
 	  		<entertainment>0</entertainment>
 	  		<effect>+1 Resources</effect>
-	  		<player>Self</player>
-	  		<targettype>Self</targettype>
-			<target></target>
-			<action>Add</action>
-			<amount>1</amount>
-			<actiontarget>Resources</actiontarget>
-			<number>15</number>
+			<amount>15</amount>
 		</card>
 		<card>
 			<type>3</type>
@@ -395,16 +256,10 @@
 			<Gender></Gender>
 	  		<img>Card_Resources</img>
 	  		<resource>2</resource>
-	  		<value>0</value>
+	  		<people>0</people>
 	  		<entertainment>0</entertainment>
 	  		<effect>+2 Resources</effect>
-	  		<player>Self</player>
-	  		<targettype>Self</targettype>
-			<target></target>
-			<action>Add</action>
-			<amount>2</amount>
-			<actiontarget>Resources</actiontarget>
-			<number>15</number>
+			<amount>15</amount>
 		</card>
 		<card>
 			<type>3</type>
@@ -412,16 +267,10 @@
 			<Gender></Gender>
 	  		<img>Card_Resources</img>
 	  		<resource>3</resource>
-	  		<value>0</value>
+	  		<people>0</people>
 	  		<entertainment>0</entertainment>
 	  		<effect>+3 Resources</effect>
-	  		<player>Self</player>
-	  		<targettype>Self</targettype>
-			<target></target>
-			<action>Add</action>
-			<amount>3</amount>
-			<actiontarget>Resources</actiontarget>
-			<number>10</number>
+			<amount>10</amount>
 		</card>
 		<card>
 			<type>3</type>
@@ -429,16 +278,10 @@
 			<Gender></Gender>
 	  		<img>Card_Resources</img>
 	  		<resource>4</resource>
-	  		<value>0</value>
+	  		<people>0</people>
 	  		<entertainment>0</entertainment>
 	  		<effect>+4 Resources</effect>
-	  		<player>Self</player>
-	  		<targettype>Self</targettype>
-			<target></target>
-			<action>Add</action>
-			<amount>2</amount>
-			<actiontarget>Resources</actiontarget>
-			<number>5</number>
+			<amount>5</amount>
 		</card>
 	</resourceCards>
 	<partylevelCards>
@@ -448,16 +291,10 @@
 			<Gender></Gender>
 	  		<img>Card_PartyLevel</img>
 	  		<resource>0</resource>
-	  		<value>0</value>
+	  		<people>0</people>
 	  		<entertainment>0</entertainment>
 	  		<effect>Increase the Party Goal Level.</effect>
-	  		<player></player>
-	  		<targettype></targettype>
-			<target></target>
-			<action></action>
-			<amount>0</amount>
-			<actiontarget></actiontarget>
-			<number>5</number>
+			<amount>5</amount>
 		</card>
 	</partylevelCards>
 </populate>

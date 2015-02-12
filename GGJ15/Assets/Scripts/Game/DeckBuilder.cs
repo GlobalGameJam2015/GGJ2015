@@ -24,17 +24,10 @@ public class Card{
 	public string Gender;
 	public Texture2D Image;
 	public int Resource;
-	public int Value;
+	public int People;
 	public int Entertainment;
 	public string Effect;
-	public string Player;
-	public string TargetType;
-	public string Target;
-	public int TargetCount;
-	public string Action;
 	public int Amount;
-	public string ActionTarget;
-	public int Count;
 	public GameObject CardObj;
 }
 
@@ -48,7 +41,7 @@ public class DeckBuilder : Photon.MonoBehaviour {
 	public List<Card> Shuffled = new List<Card>();
 	private List<int> CardCounts = new List<int>();
 	private string DeckString = "";
-	private int TotalCards = 126;
+	private int TotalCards;
 
 	//XML
 	private TextAsset Xml;
@@ -99,38 +92,25 @@ public class DeckBuilder : Photon.MonoBehaviour {
 							Cards[Cards.Count-1].Image = Resources.Load(cardTitle.InnerText) as Texture2D;
 						if (cardTitle.Name == "resource")
 							Cards[Cards.Count-1].Resource = int.Parse(cardTitle.InnerText);
-						if (cardTitle.Name == "value")
-							Cards[Cards.Count-1].Value = int.Parse(cardTitle.InnerText);
+						if (cardTitle.Name == "people")
+							Cards[Cards.Count-1].People = int.Parse(cardTitle.InnerText);
 						if (cardTitle.Name == "entertainment")
 							Cards[Cards.Count-1].Entertainment = int.Parse(cardTitle.InnerText);
 						if (cardTitle.Name == "effect")
 							Cards[Cards.Count-1].Effect = cardTitle.InnerText;
-						if (cardTitle.Name == "player")
-							Cards[Cards.Count-1].Player = cardTitle.InnerText;
-						if (cardTitle.Name == "targettype")
-							Cards[Cards.Count-1].TargetType = cardTitle.InnerText;
-						if (cardTitle.Name == "target")
-							Cards[Cards.Count-1].Target = cardTitle.InnerText;
-						if (cardTitle.Name == "targetcount")
-							Cards[Cards.Count-1].TargetCount = int.Parse(cardTitle.InnerText);
-						if (cardTitle.Name == "action")
-							Cards[Cards.Count-1].Action = cardTitle.InnerText;
 						if (cardTitle.Name == "amount")
 							Cards[Cards.Count-1].Amount = int.Parse(cardTitle.InnerText);
-						if (cardTitle.Name == "actiontarget")
-							Cards[Cards.Count-1].ActionTarget = cardTitle.InnerText;
-						if (cardTitle.Name == "number")
-							Cards[Cards.Count-1].Count = int.Parse(cardTitle.InnerText);
 					}
 
 					//Add to list the number of each card
-					CardCounts.Add(Cards[Cards.Count-1].Count);
+					CardCounts.Add(Cards[Cards.Count-1].Amount);
+					TotalCards += Cards[Cards.Count-1].Amount;
 				}
 			}
 		}
-
+		Debug.Log(TotalCards);
 		//Shuffle deck if you are the host
-		if(PhotonNetwork.isMasterClient)
+		if(PhotonNetwork.isMasterClient || Manager.isSinglePlayer)
 			ShuffleDeck();
 	}
 
@@ -144,7 +124,7 @@ public class DeckBuilder : Photon.MonoBehaviour {
 			CardCounts[RandomCard]--;
 		}
 
-		for(int i = 0; i < Cards[Cards.Count-1].Count; i++){
+		for(int i = 0; i < Cards[Cards.Count-1].Amount; i++){
 			int num = Random.Range(9,Shuffled.Count);
 			Shuffled.Insert(num,Cards[Cards.Count-1]);
 		}

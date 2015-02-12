@@ -54,7 +54,7 @@ public class DebugManager : MonoBehaviour {
 		reference.Description = card.Effect;
 		reference.Image = card.Image;
 		reference.Resource = card.Resource;
-		reference.People = card.Value;
+		reference.People = card.People;
 		reference.Entertainment = card.Entertainment;
 	}
 }
